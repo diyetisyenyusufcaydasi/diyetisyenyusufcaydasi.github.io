@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>Diyetisyen Yusuf Çaydaşı | Uzman Diyetisyen</title>
+    <meta name="description" content="Ankara Diyetisyen Yusuf Çaydaşı. Sağlıklı beslenme, kilo verme, bölgesel zayıflama ve insülin direnci diyetlerinde Dietera ile profesyonel klinik destek.">
+    <title>Diyetisyen Yusuf Çaydaşı | Ankara Uzman Diyetisyen & Online Diyet</title>
     
     <!-- Zarif Google Fontları -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,7 +97,7 @@
         .bio-text p { margin-bottom: 20px; font-size: 1.05em; color: var(--text-muted); text-align: justify; font-weight: 300; }
         .highlight { color: var(--primary-green); font-weight: 600; font-family: 'Playfair Display', serif; font-style: italic; }
 
-        /* YENİ: IPHONE 17 PRO MAX MOCKUP (Dietera) */
+        /* IPHONE 17 PRO MAX MOCKUP (Dietera) */
         .dietera-section { background-color: var(--bg-offwhite); padding: 80px 5%; margin-top: 40px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); position: relative; z-index: 2; }
         .dietera-wrapper { display: flex; align-items: center; justify-content: center; gap: 80px; max-width: 1100px; margin: 0 auto; }
         
@@ -108,7 +109,6 @@
         .app-icon img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
         .app-label { color: #fff; font-size: 0.65em; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.5); font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
         
-        /* Dietera Uygulaması Parlama ve Vurgu */
         .dietera-app { transform: scale(1.15); position: relative; z-index: 5; animation: pulseApp 2.5s infinite; }
         .dietera-app .app-icon { box-shadow: 0 0 25px rgba(39, 174, 96, 0.8); border: 2px solid #fff; background: white; }
         @keyframes pulseApp { 0% { transform: scale(1.15); } 50% { transform: scale(1.22); } 100% { transform: scale(1.15); } }
@@ -171,13 +171,13 @@
         .blog-card-img { height: 200px; background-color: #eee; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.5s; }
         .blog-card:hover .blog-card-img { transform: scale(1.05); }
         
-        /* Şık Placeholder Resimler (Unsplash) */
+        /* Şık Placeholder Resimler (Unsplash) - FOTOĞRAFLAR GÜNCELLENDİ */
         .blog-card-img.img1 { background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop'); }
         .blog-card-img.img2 { background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop'); }
         .blog-card-img.img3 { background-image: url('https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=800&auto=format&fit=crop'); }
         .blog-card-img.img4 { background-image: url('https://images.unsplash.com/photo-1494390248081-4e521a5940db?q=80&w=800&auto=format&fit=crop'); }
         .blog-card-img.img5 { background-image: url('https://images.unsplash.com/photo-1478144592103-25e218a04891?q=80&w=800&auto=format&fit=crop'); }
-        .blog-card-img.img6 { background-image: url('https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop'); } 
+        .blog-card-img.img6 { background-image: url('https://images.unsplash.com/photo-1517055936440-705352c3886f?q=80&w=800&auto=format&fit=crop'); } /* SU İÇME GÖRSELİ */
         
         .blog-card-content { padding: 25px; }
         .blog-author { font-size: 0.8em; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;}
@@ -216,7 +216,8 @@
         .social-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-offwhite); border: 1px solid var(--border-light); padding: 10px 25px; border-radius: 30px; color: var(--text-dark); text-decoration: none; font-weight: 500; font-size: 0.95em; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
         .social-btn:hover { background: var(--primary-green); color: white; border-color: var(--primary-green); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(20, 90, 50, 0.15); }
 
-        .map-container { border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.06); border: 1px solid var(--border-light); }
+        .map-container { border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.06); border: 1px solid var(--border-light); position: relative; }
+        .map-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: block; }
 
         /* KUSURSUZ MOBİL CİHAZ OPTİMİZASYONU */
         @media screen and (max-width: 768px) {
@@ -232,7 +233,7 @@
             
             /* iPhone Mockup Mobil Ayarı */
             .dietera-wrapper { flex-direction: column; text-align: center; gap: 40px; }
-            .iphone-frame { width: 260px; height: 540px; }
+            .iphone-frame { width: 260px; height: 540px; margin: 0 auto; }
             .dietera-info h2 { font-size: 1.8em; text-align: center; }
             .dietera-info .feature-list { display: inline-block; text-align: left; }
             
@@ -536,7 +537,7 @@
             </ul>
             <p style="color: var(--text-dark); margin-bottom: 20px; font-style: italic;">Programıma dahil olmadan önce, sistemimize ve birbirimize uygunluğumuzu değerlendiriyorum.</p>
             
-            <span class="urgency-text">⚠️ DİKKAT: Kontenjanlarımız ve Kampanyalı Paketlerden Yararlanmak İçin Hemen Harekete Geçin!</span>
+            <span class="urgency-text">⚠️ DİKKAT: Sınırlı Kontenjan ve Kampanyalı Paketlerden Yararlanmak İçin Hemen Harekete Geçin!</span>
             
             <div style="text-align: center;">
                 <a href="#analysis" class="btn-main">Ücretsiz Formu Doldur</a>
@@ -544,7 +545,7 @@
         </div>
     </section>
 
-    <!-- İNTERAKTİF SAĞLIK REHBERİ (6'lı Kart Sistemi ve Modal Pop-up) -->
+    <!-- İNTERAKTİF SAĞLIK REHBERİ (SEO UYUMLU MAKALELER) -->
     <section id="rehber">
         <h2 class="section-title reveal">Klinik Sağlık Rehberi</h2>
         <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px; font-style: italic;">Makalelerin tamamını okumak için kartların üzerine tıklayın.</p>
@@ -556,14 +557,13 @@
                 <div class="blog-card-content">
                     <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
                     <div class="blog-title">Beslenme Hayatınızın Merkezinde Olmalıdır</div>
-                    <div class="blog-desc">Modern yaşamın getirdiği stresi ve hastalıkları nasıl yenebilirsiniz? Gerçek sağlığın sırrı tabağınızda gizli.</div>
+                    <div class="blog-desc">Sağlıklı beslenme ve kalıcı kilo verme yöntemleri ile stres ve yorgunluğu nasıl yenebilirsiniz?</div>
                     <span class="read-more-hint">Makaleyi Oku ↗</span>
                 </div>
                 <div class="blog-hidden-content">
-                    <h4>Beslenme, Hücrelerinizin İnşa Malzemesidir</h4>
-                    <p>Klinikte danışanlarımla ilk görüşmemde en sık karşılaştığım yanılgı, beslenmenin sadece bir "kilo verme aracı" olarak görülmesidir. Oysa beslenme, hücrelerinizin günlük inşa malzemesidir. Sabah güne başlarken tabağınıza koyduğunuz yiyecek, gün içindeki stres seviyenizi, işinize olan odaklanma gücünüzü ve hatta gece uyku kalitenizi doğrudan belirler.</p>
-                    <p>Özellikle işlenmiş gıdalar ve yüksek rafine şeker içeren ürünler, vücutta "sessiz inflamasyon" dediğimiz hücresel iltihaplanmalara yol açar. Bu da sabahları yorgun uyanmanızın, gün içi enerji düşüşlerinizin temel sebebidir.</p>
-                    <p>Bir diyetisyen olarak tavsiyem; hayatınızın merkezine doğru kompleks karbonhidratları, kaliteli hayvansal/bitkisel proteinleri ve avokado, zeytinyağı gibi sağlıklı yağları koymanızdır. Bunu başardığınızda sadece bedensel bir hafifleme değil, zihinsel bir uyanış da yaşarsınız.</p>
+                    <h4>Kalıcı Zayıflama ve Hücresel Beslenme</h4>
+                    <p>Birçok insan diyet listesi kavramını sadece yaz öncesi hızlı kilo verme aracı olarak görür. Oysa <strong>sağlıklı beslenme</strong>, bağışıklık sisteminizi güçlendiren ve hücrelerinizi onaran en temel ihtiyaçtır. Gün içinde yediğiniz gıdalar; işteki odaklanma gücünüzü, enerjinizi ve hatta uyku kalitenizi doğrudan etkiler.</p>
+                    <p>Özellikle işlenmiş gıdalar ve rafine şeker içeren ürünler vücutta "sessiz inflamasyon" yaratarak kronik yorgunluğa sebep olur. <strong>Ankara diyetisyen</strong> tavsiyesi arayan danışanlarıma klinikte ilk söylediğim şey şudur: Hayatınızın merkezine doğru kompleks karbonhidratları, kaliteli proteinleri ve sağlıklı yağları (avokado, zeytinyağı) yerleştirin. Bunu başardığınızda sadece hızlı zayıflama değil, aynı zamanda zihinsel bir uyanış da yaşarsınız. Unutmayın, ne yerseniz ona dönüşürsünüz.</p>
                 </div>
             </div>
 
@@ -573,14 +573,13 @@
                 <div class="blog-card-content">
                     <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
                     <div class="blog-title">Duygusal Yemeyi Yönetmenin Sırları</div>
-                    <div class="blog-desc">Stresli anlarda buzdolabına koşmak kaderiniz değil. Duygusal yeme krizlerini durdurmanın biyolojik yolları.</div>
+                    <div class="blog-desc">Tatlı krizlerini durdurmanın ve duygusal yeme ataklarını biyolojik olarak yönetmenin kanıtlanmış yolları.</div>
                     <span class="read-more-hint">Makaleyi Oku ↗</span>
                 </div>
                 <div class="blog-hidden-content">
-                    <h4>Mideniz mi Aç, Yoksa Beyniniz mi?</h4>
-                    <p>Stresli, üzgün, yalnız veya aşırı gergin olduğunuz anlarda midenizin değil, aslında beyninizin acıktığını biliyor muydunuz? Biyolojik olarak stres anında vücudunuz kortizol hormonu salgılar. Bu hormon, beyninize "Tehlikedeyiz, acilen enerji bul!" sinyali gönderir ve beyin en hızlı mutluluk (dopamin ve serotonin) kaynağı olan şekerli, basit karbonhidratlı gıdalara yönelmenizi sağlar.</p>
-                    <p>Bu kısır döngüyü kırmanın ilk kuralı, tetiği fark etmektir. Klinik gözlemlerime göre, fiziksel açlık yavaş yavaş ve midede guruldama ile gelirken; duygusal açlık aniden, boyundan yukarıda ve spesifik bir gıdaya (örneğin sadece çikolata veya cips) yönelik başlar.</p>
-                    <p><strong>Danışanlarıma uyguladığım "15 Dakika Kuralı":</strong> O tatlı krizinin geldiğini hissettiğiniz an mutfağa gitmek yerine 15 dakika bekleyin. Bu sürede büyük bir bardak su için ve ortam değiştirin. Çoğu zaman beyin o sahte aciliyet hissini unutacak ve kontrolü tekrar size verecektir.</p>
+                    <h4>Tatlı Krizi ve İştah Kontrolü</h4>
+                    <p>Stresli, üzgün veya aşırı yorgun olduğunuz anlarda tatlı krizi yaşamak ve <strong>duygusal yeme atağı</strong> geçirmek kaderiniz değildir. Biyolojik olarak stres anında vücudunuz kortizol hormonu salgılar. Beyniniz, hızlı bir serotonin (mutluluk) salgısı oluşturmak için sizi acilen iştah açıcı basit karbonhidratlara ve şekerli gıdalara yönlendirir.</p>
+                    <p>Bu döngü, özellikle bölgesel yağlanma ve <strong>göbek eritme</strong> sürecinde en büyük engeldir. Fiziksel açlık midede yavaş yavaş başlarken, duygusal açlık aniden ortaya çıkar. Kan şekerinizi ve <strong>insülin direncini</strong> dengeleyecek yüksek lifli gıdalar tüketmek, iştah kapatıcı en doğal yöntemdir. O "kriz" anında sadece 10 dakika bekleyip 2 bardak su içmek bile kontrolü tekrar elinize almanızı sağlayacaktır.</p>
                 </div>
             </div>
 
@@ -590,14 +589,13 @@
                 <div class="blog-card-content">
                     <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
                     <div class="blog-title">Kefir İç, Gerçek Sağlığı Bul</div>
-                    <div class="blog-desc">Bağırsak floranız sizin ikinci beyninizdir. Doğal probiyotik deposu kefirin bağışıklık üzerindeki mucizevi etkileri.</div>
+                    <div class="blog-desc">Probiyotik kullanımının önemi, kefirin faydaları ve bağırsak florasının yağ yakımı üzerindeki etkileri.</div>
                     <span class="read-more-hint">Makaleyi Oku ↗</span>
                 </div>
                 <div class="blog-hidden-content">
-                    <h4>İkinci Beynimiz: Bağırsaklarımız ve Probiyotik Güç</h4>
-                    <p>Bağırsaklarımız, trilyonlarca faydalı ve zararlı bakteriye ev sahipliği yapan, bağışıklık sistemimizin tam %70'ini oluşturan ana merkezdir. Kötü beslenme, antibiyotik kullanımı ve stres bu florayı bozarak hastalıklara davetiye çıkarır. İşte bu noktada doğanın bize sunduğu en büyük mucizelerden biri olan kefir devreye giriyor.</p>
-                    <p>Kefir, içerdiği zengin <em>Lactobacillus</em> cinsi canlı probiyotikler sayesinde bağırsak bariyerini onarır. Dahası, vücudumuzdaki mutluluk hormonu olan serotoninin yaklaşık %90'ı bağırsaklarda sentezlenir. Sağlıklı bir bağırsak florası, sadece kronik şişkinlik veya sindirim sorunlarını çözmekle kalmaz; aynı zamanda anksiyeteye karşı korur ve cildin parlamasını sağlar.</p>
-                    <p>Diyet süreçlerinde kilo vermenin durduğu "plato" evrelerinde, metabolik dirençleri kırmanın en doğal yolu florayı yeniden canlandırmaktır. Özellikle gece yatmadan 2 saat önce veya sabah aç karnına içilen bir bardak kefir, bedeninize yapacağınız en büyük yatırımlardandır.</p>
+                    <h4>Probiyotik Gücü ve Bağırsak Florası</h4>
+                    <p>Bağırsak sağlığı ve <strong>probiyotik kullanımı</strong> son yılların en önemli sağlık ve diyet konularındandır. Bağırsaklarımız, bağışıklık sistemimizin tam %70'ini oluşturan ana merkezdir. Stres ve yanlış beslenme bu florayı bozarak kilo verme sürecini yavaşlatır.</p>
+                    <p><strong>Kefirin faydaları</strong> arasında sadece bağışıklığı güçlendirmek değil, aynı zamanda vücuttaki inatçı ödemi atmak ve karın bölgesindeki şişkinlik problemlerini çözmek de yer alır. Mutluluk hormonu olan serotoninin büyük bir kısmı bağırsaklarda sentezlendiği için, düzenli kefir tüketimi anksiyeteye karşı da korur. Metabolizma hızlandırmak ve plato evresindeki direnci kırmak için günde bir bardak doğal kefir veya probiyotik destek tüketmek büyük fark yaratır.</p>
                 </div>
             </div>
 
@@ -607,14 +605,13 @@
                 <div class="blog-card-content">
                     <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
                     <div class="blog-title">Kadınlar İçin Süper Besinler</div>
-                    <div class="blog-desc">Hormonal dengeyi sağlamak ve metabolizmayı hızlandırmak için kadınların günlük rutininde olması gereken altın gıdalar.</div>
+                    <div class="blog-desc">Polikistik over, insülin direnci ve hormonal denge için kadınlarda kilo vermeyi kolaylaştıran besinler.</div>
                     <span class="read-more-hint">Makaleyi Oku ↗</span>
                 </div>
                 <div class="blog-hidden-content">
-                    <h4>Kadın Metabolizmasına Özel Beslenme Stratejileri</h4>
-                    <p>Kadın metabolizması, aylık hormonal dalgalanmalar (östrojen ve progesteron dengesi) nedeniyle erkeğe göre çok daha hassas ve spesifik bir beslenme rutinine ihtiyaç duyar. Polikistik Over Sendromu (PKOS), insülin direnci ve tiroid yavaşlamaları klinik tablolarda en sık gördüğümüz durumlardır.</p>
-                    <p>Kadın danışanlarımın beslenme programlarına mutlaka eklediğim bazı kilit gıdalar vardır: Aylık döngülerde kaybedilen demir depolarını doldurmak için <strong>ıspanak ve pazı</strong> gibi koyu yeşil yapraklı sebzeler mutlaka tüketilmelidir.</p>
-                    <p>Bunun yanında, cilt elastikiyetini koruyan, kolajen yıkımını önleyen C vitamini deposu <strong>orman meyveleri (yaban mersini, böğürtlen)</strong> ve hormonal inflamasyonu baskılayan Omega-3 zengini <strong>ceviz ile keten tohumu</strong> rutine eklenmelidir. İlerleyen yaşlarda kemik yoğunluğunu korumak için kalsiyum kaynakları elzemdir.</p>
+                    <h4>Hormonal Denge ve Kadınlarda Kilo Verme</h4>
+                    <p><strong>Kadınlarda kilo verme süreci</strong>, erkeklere kıyasla hormonal dalgalanmalar (östrojen ve progesteron) nedeniyle farklılık gösterir. Özellikle <strong>Polikistik Over Sendromu (PKOS) diyeti</strong>, insülin direnci tedavisi ve tiroid yavaşlaması gibi durumlar, spesifik bir beslenme programı gerektirir.</p>
+                    <p>Kadın metabolizmasını dengelemek için demir depolarını dolduran ıspanak ve pazı; kolajen üretimini destekleyen, antioksidan deposu orman meyveleri (yaban mersini, böğürtlen) sıklıkla tüketilmelidir. Bunun yanında, hormonal inflamasyonu baskılayan Omega-3 zengini ceviz ve somon, sağlıklı yağ yakımı için elzemdir. Beslenmenize bu "yağ yakıcı süper besinleri" ekleyerek hem enerjinizi artırabilir hem de inatçı bölgesel kilolardan kurtulabilirsiniz.</p>
                 </div>
             </div>
 
@@ -624,31 +621,29 @@
                 <div class="blog-card-content">
                     <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
                     <div class="blog-title">Metabolizmayı Ateşleyen Kural</div>
-                    <div class="blog-desc">Durmuş veya yavaşlamış bir metabolizmayı yeniden canlandırmak ve yağ yakımını maksimize etmek için kritik adımlar.</div>
+                    <div class="blog-desc">Kilo verme duraklamasını (plato) aşmak, yağ yakımını hızlandırmak ve bazal metabolizmayı canlandırmak.</div>
                     <span class="read-more-hint">Makaleyi Oku ↗</span>
                 </div>
                 <div class="blog-hidden-content">
-                    <h4>Termik Efekt ve Kas Kütlesinin Gücü</h4>
-                    <p>Sürekli olarak düşük kalorili şok diyetler yapıp bir türlü kalıcı kilo veremiyorsanız, metabolizmanız kendini koruma mekanizması gereği "kıtlık moduna" almış demektir. Vücut tehlikede olduğunu sanır ve harcadığı enerjiyi minimuma indirir. Bu direnci kırmanın ilk yolu, yeterli ve kaliteli protein tüketimidir.</p>
-                    <p>Bilimsel olarak gıdaların "Termik Efekti" (TEF) vardır. Vücudumuz, proteinleri sindirirken karbonhidrat ve yağlara kıyasla yaklaşık %20-30 oranında daha fazla kalori harcar. Yani sadece doğru proteini yiyerek bile metabolizmanızı hızlandırırsınız.</p>
-                    <p>İkinci altın kural ise vücudun enerji santralleri olan kas kütlesini korumaktır. Sadece saatlerce kardiyo yapmak yerine, hafif ağırlık veya kendi vücut ağırlığınızla yapacağınız direnç egzersizleri, oturduğunuz yerde bile kalori yakmanızı sağlar. Kaliteli bir uyku ve bedeni strese sokmadan yapılan dengeli beslenme, yavaşlamış bir metabolizmanın en kesin ilacıdır.</p>
+                    <h4>Kilo Verme Duraklaması ve Yağ Yakımı</h4>
+                    <p>Sürekli çok düşük kalorili diyetler yapmanıza rağmen <strong>kilo verme duraklaması</strong> (plato evresi) yaşıyorsanız, vücudunuz kendini "kıtlık moduna" almış demektir. <strong>Metabolizma hızlandırma yolları</strong> arasında en önemlisi, kaliteli protein tüketimini optimize etmektir.</p>
+                    <p>Proteinlerin termik efekti (TEF) çok yüksektir; yani vücudunuz proteinleri sindirirken karbonhidrat ve yağlara kıyasla çok daha fazla kalori harcar. İkinci altın kural ise bazal metabolizmayı canlı tutan kas kütlesini korumaktır. Sadece kardiyo yapmak yerine vücut ağırlığıyla yapılan egzersizler, dinlenirken dahi <strong>yağ yakımı</strong> sağlamanızı kolaylaştırır. Öğün atlamadan yapılan doğru bir planlama, yavaşlayan metabolizmanızı yeniden ateşleyecektir.</p>
                 </div>
             </div>
 
-            <!-- Kart 6 -->
-            <div class="blog-card" data-img="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" onclick="openModal(this)">
+            <!-- Kart 6 (Ferahlatıcı Su Bardağı Görseli Eklendi) -->
+            <div class="blog-card" data-img="https://images.unsplash.com/photo-1517055936440-705352c3886f?q=80&w=800&auto=format&fit=crop" onclick="openModal(this)">
                 <div class="blog-card-img img6"></div>
                 <div class="blog-card-content">
                     <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
                     <div class="blog-title">Su Tüketiminin Yağ Yakımındaki Rolü</div>
-                    <div class="blog-desc">Su içmeden diyet yapmak, benzini olmayan bir arabayı itmeye benzer. Hidrasyonun metabolik etkilerini keşfedin.</div>
+                    <div class="blog-desc">Su içmenin faydaları, vücuttan ödem atma yöntemleri ve sıvı tüketiminin hızlı zayıflama üzerindeki gücü.</div>
                     <span class="read-more-hint">Makaleyi Oku ↗</span>
                 </div>
                 <div class="blog-hidden-content">
-                    <h4>Biyokimyasal Gerçek: Su Yoksa Yağ Yakımı da Yok</h4>
-                    <p>Bir diyetisyen olarak en sık duyduğum cümlelerden biri "Hocam çok az yiyorum ama kilo veremiyorum" cümlesidir. Sorduğum ilk soru her zaman şu olur: Günde ne kadar su içiyorsunuz?</p>
-                    <p>Vücudunuz susuz (dehidrate) kaldığında, böbrekleriniz toksin atma görevini tam kapasiteyle yapamaz. Bu durumda böbreklerin yükünü vücudun en büyük detoks organı olan "Karaciğer" devralır. Karaciğerin diyet sürecindeki asıl görevi ise depolanmış yağları yakarak (lipoliz) enerjiye çevirmektir. Ancak karaciğer böbreğin işini yapmaya çalışırken, yağ yakımını mecburen askıya alır.</p>
-                    <p>Yani yeterli su içmediğinizde, metabolik olarak yağ yakım hızınızı kendi ellerinizle durdurmuş olursunuz. Sabah uyanır uyanmaz içeceğiniz 2 büyük bardak ılık su, gece boyu yavaşlayan iç organlarınızı yıkayarak metabolizmayı %24 ile %30 oranında hızlandırır. Dietera uygulamamızdaki akıllı su takip sistemi, tam da bu biyokimyasal kilidi kırmak için tasarlanmıştır.</p>
+                    <h4>Su İçmenin Faydaları ve Ödem Atma</h4>
+                    <p>Bir diyetisyen olarak sıklıkla karşılaştığım "Çok az yiyorum ama zayıflayamıyorum" probleminin temelinde genellikle yetersiz sıvı alımı yatar. <strong>Su içmenin faydaları</strong> saymakla bitmez, ancak en önemlisi <strong>yağ yakımı</strong> üzerindeki biyokimyasal etkisidir.</p>
+                    <p>Vücudunuz susuz (dehidrate) kaldığında böbreklerin toksin atma yükü karaciğere biner. Karaciğerin asıl görevi depolanmış yağları yakarak (lipoliz) enerjiye çevirmektir. Ancak toksin temizlemeye odaklanan karaciğer, yağ yakım işlemini askıya alır. <strong>Ödem atma</strong> ve inatçı kilolardan kurtulmanın yolu suyu yudum yudum ve gün içine yayarak içmektir. Öğünlerden önce içilen su, iştahı baskılar ve metabolizma hızını %30'a kadar artırır. Kalıcı ve <strong>hızlı zayıflama</strong> için suyunuzu asla ihmal etmeyin.</p>
                 </div>
             </div>
 
@@ -672,7 +667,7 @@
             <div class="contact-info">
                 <div>📞 Telefon & WhatsApp:<br><a href="tel:+905070410406">0507 041 04 06</a></div>
                 <div style="margin-top: 10px;">✉️ E-Posta:<br><a href="mailto:diyetisyen.yusufcaydasi@gmail.com">diyetisyen.yusufcaydasi@gmail.com</a></div>
-                <div class="contact-address">📍 06830 Gölbaşı/Ankara, Seğmenler, Türkiye</div>
+                <div class="contact-address">📍 Ankara, Seğmenler, 966.Cad. No: 20/A, 06000 İç Anadolu/Ankara</div>
             </div>
 
             <!-- SOSYAL MEDYA BUTONLARI -->
@@ -684,10 +679,12 @@
                 </div>
             </div>
             
-            <!-- Google Haritalar Entegrasyonu -->
-            <div class="map-container">
+            <!-- Google Haritalar Entegrasyonu (Tıklanabilir Çerçeve) -->
+            <div class="map-container" style="margin-top: 25px;">
+                <!-- Haritaya Tıklanınca Navigasyon Uygulamasına Yönlendiren Görünmez Katman -->
+                <a href="https://maps.google.com/?q=Ankara,+Se%C4%9Fmenler,+966.Cad.+No:+20/A,+06000+%C4%B0%C3%A7+Anadolu/Ankara" target="_blank" class="map-overlay"></a>
                 <iframe 
-                    src="https://maps.google.com/maps?q=Diyetisyen%20Yusuf%20%C3%87ayda%C5%9F%C4%B1,%2006830%20G%C3%B6lba%C5%9F%C4%B1/Ankara,%20Se%C4%9Fmenler,%20T%C3%BCrkiye&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    src="https://maps.google.com/maps?q=Ankara,%20Se%C4%9Fmenler,%20966.Cad.%20No:%2020/A,%2006000%20%C4%B0%C3%A7%20Anadolu/Ankara&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                     width="100%" 
                     height="280" 
                     style="border:0; display: block;" 
@@ -695,6 +692,9 @@
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
+            </div>
+            <div style="margin-top: 15px;">
+                <a href="https://maps.google.com/?q=Ankara,+Se%C4%9Fmenler,+966.Cad.+No:+20/A,+06000+%C4%B0%C3%A7+Anadolu/Ankara" target="_blank" class="btn-main" style="padding: 10px 25px; font-size: 0.9em; box-shadow: none;">Haritada Yol Tarifi Al</a>
             </div>
         </div>
     </section>
