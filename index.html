@@ -9,7 +9,7 @@
     <!-- Zarif Google Fontları -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* Renk Paleti ve Temel Ayarlar */
@@ -18,13 +18,16 @@
             --bg-offwhite: #fcfcfc;
             --primary-green: #145a32;
             --accent-green: #27ae60;
+            --light-green: #e9f2eb;
             --text-dark: #1a1a1a;
             --text-muted: #555555;
             --border-light: #eaeaea;
+            --warning-red: #c0392b;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        html { scroll-behavior: smooth; }
         body { background-color: var(--bg-white); color: var(--text-dark); font-family: 'Montserrat', sans-serif; line-height: 1.8; overflow-x: hidden; position: relative; width: 100%; }
         h1, h2, h3, h4, .logo { font-family: 'Playfair Display', serif; }
 
@@ -33,12 +36,12 @@
         ::-webkit-scrollbar-thumb { background: var(--primary-green); border-radius: 4px; }
 
         /* MÜKEMMELLEŞTİRİLMİŞ 3D ARKA PLAN ANİMASYONU */
-        .floating-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden; background: transparent; }
+        .floating-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; background: transparent; }
         .floating-bg span { 
             position: absolute; 
             top: -20%; 
-            opacity: 0.22; 
-            filter: drop-shadow(0px 15px 25px rgba(20, 90, 50, 0.15)) saturate(1.2); 
+            opacity: 0.15; 
+            filter: drop-shadow(0px 10px 15px rgba(20, 90, 50, 0.15)); 
             animation: floatSmooth linear infinite; 
             will-change: transform;
         }
@@ -52,36 +55,40 @@
         }
 
         /* Üst Menü */
-        nav { background-color: rgba(255, 255, 255, 0.98); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
-        nav .logo { font-size: 1.6em; font-weight: 600; color: var(--primary-green); letter-spacing: 1px; font-style: italic; text-align: center; }
+        nav { background-color: rgba(255, 255, 255, 0.98); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        nav .logo { font-size: 1.4em; font-weight: 600; color: var(--primary-green); letter-spacing: 1px; font-style: italic; text-align: center; }
         nav .logo span { font-weight: 400; color: var(--accent-green); }
-        nav ul { list-style: none; display: flex; gap: 25px; }
-        nav ul li a { color: var(--text-dark); text-decoration: none; font-weight: 500; font-size: 0.85em; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav ul li a { color: var(--text-dark); text-decoration: none; font-weight: 500; font-size: 0.8em; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
         nav ul li a:hover { color: var(--accent-green); }
 
+        /* Ortak Buton Stili */
+        .btn-main { display: inline-block; background-color: var(--accent-green); color: white; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-weight: 600; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); transition: all 0.3s; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+        .btn-main:hover { background-color: var(--primary-green); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(20, 90, 50, 0.4); color: white;}
+
         /* Hero Bölümü */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 50px; background: linear-gradient(to bottom, rgba(243, 248, 245, 0.7) 0%, transparent 100%); }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 50px; background: linear-gradient(to bottom, rgba(243, 248, 245, 0.7) 0%, transparent 100%); position: relative; z-index: 1; }
         .hero h1 { font-size: 4em; color: var(--primary-green); font-weight: 700; margin-bottom: 20px; line-height: 1.1; }
         .hero h1 i { font-weight: 400; color: var(--accent-green); }
-        .hero p { font-size: 1.2em; max-width: 700px; margin-bottom: 40px; color: var(--text-muted); font-weight: 300; }
+        .hero p { font-size: 1.2em; max-width: 800px; margin-bottom: 40px; color: var(--text-muted); font-weight: 300; }
         
         .announcement-banner { background-color: var(--primary-green); color: white; padding: 12px 25px; border-radius: 50px; font-size: 0.85em; font-weight: 500; letter-spacing: 1px; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
         .announcement-banner span { background: white; color: var(--primary-green); padding: 4px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 700; }
 
         /* Ortak Bölümler */
-        section { padding: 100px 5%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-        .section-title { font-size: 2.5em; color: var(--primary-green); text-align: center; margin-bottom: 60px; font-weight: 600; position: relative; }
+        section { padding: 80px 5%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+        .section-title { font-size: 2.5em; color: var(--primary-green); text-align: center; margin-bottom: 50px; font-weight: 600; position: relative; }
         .section-title::after { content: ''; display: block; width: 60px; height: 2px; background-color: var(--accent-green); margin: 20px auto 0 auto; }
 
         /* Otorite Bölümü */
         .authority-section { background: linear-gradient(135deg, var(--primary-green) 0%, #0e4022 100%); color: white; padding: 80px 5%; text-align: center; margin-top: 50px; position: relative; z-index: 2; }
         .authority-content { max-width: 900px; margin: 0 auto; }
         .authority-content h2 { font-size: 2.5em; margin-bottom: 20px; font-weight: 600; font-style: italic; }
-        .authority-content p { font-size: 1.1em; font-weight: 300; opacity: 0.95; margin-bottom: 30px; line-height: 1.9; }
+        .authority-content p { font-size: 1.1em; font-weight: 300; opacity: 0.95; margin-bottom: 30px; line-height: 1.9; text-align: justify; }
         .authority-badge { display: inline-block; border: 2px solid var(--accent-green); padding: 12px 30px; font-size: 1.1em; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--accent-green); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
 
         /* Kurumsal Profil & Fotoğraf Entegrasyonu */
-        .bio-container { background-color: rgba(252, 252, 252, 0.9); padding: 50px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 40px; }
+        .bio-container { background-color: rgba(252, 252, 252, 0.95); padding: 50px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 40px; }
         .bio-photo-wrapper { flex-shrink: 0; }
         .bio-photo { width: 320px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 15px 35px rgba(20, 90, 50, 0.15); border: 4px solid white; transition: transform 0.4s; }
         .bio-photo:hover { transform: translateY(-5px); }
@@ -89,22 +96,48 @@
         .bio-text p { margin-bottom: 20px; font-size: 1.05em; color: var(--text-muted); text-align: justify; font-weight: 300; }
         .highlight { color: var(--primary-green); font-weight: 600; font-family: 'Playfair Display', serif; font-style: italic; }
 
+        /* YENİ: IPHONE 17 PRO MAX MOCKUP (Dietera) */
+        .dietera-section { background-color: var(--bg-offwhite); padding: 80px 5%; margin-top: 40px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); position: relative; z-index: 2; }
+        .dietera-wrapper { display: flex; align-items: center; justify-content: center; gap: 80px; max-width: 1100px; margin: 0 auto; }
+        
+        .iphone-frame { width: 280px; height: 580px; background: linear-gradient(135deg, #a8e6cf 0%, #34495e 100%); border-radius: 45px; border: 12px solid #2c2c2e; box-shadow: 0 30px 60px rgba(0,0,0,0.2), inset 0 0 0 5px #000; position: relative; overflow: hidden; display: flex; flex-direction: column; flex-shrink: 0; }
+        .dynamic-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 90px; height: 26px; background: #000; border-radius: 20px; z-index: 10; }
+        .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 10px; padding: 70px 15px 20px; }
+        .app-icon-container { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .app-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; font-size: 1.5em; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .app-icon img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
+        .app-label { color: #fff; font-size: 0.65em; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.5); font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+        
+        /* Dietera Uygulaması Parlama ve Vurgu */
+        .dietera-app { transform: scale(1.15); position: relative; z-index: 5; animation: pulseApp 2.5s infinite; }
+        .dietera-app .app-icon { box-shadow: 0 0 25px rgba(39, 174, 96, 0.8); border: 2px solid #fff; background: white; }
+        @keyframes pulseApp { 0% { transform: scale(1.15); } 50% { transform: scale(1.22); } 100% { transform: scale(1.15); } }
+        
+        .iphone-dock { margin-top: auto; margin-bottom: 15px; background: rgba(255,255,255,0.3); backdrop-filter: blur(20px); border-radius: 25px; padding: 12px 10px; display: flex; justify-content: space-around; width: 90%; align-self: center; }
+
+        .dietera-info { flex: 1; }
+        .dietera-info h2 { font-size: 2.2em; color: var(--primary-green); font-weight: 700; margin-bottom: 20px; line-height: 1.2; font-family: 'Playfair Display', serif; }
+        .dietera-info p { font-size: 1.05em; color: var(--text-muted); margin-bottom: 25px; line-height: 1.8; text-align: justify; }
+        
+        .feature-list { list-style: none; margin-bottom: 25px; text-align: left; }
+        .feature-list li { margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-muted); font-weight: 500; font-size: 1.05em; }
+        .feature-list li::before { content: '✓'; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; font-size: 1.2em; top: -2px; }
+        .feature-list li strong { color: var(--primary-green); }
+
         /* İdeal Kilo & Anket Modülü */
-        .interactive-box { background: rgba(244, 249, 244, 0.9); border: 1px solid #d5e8d4; border-radius: 10px; padding: 40px; text-align: center; margin-top: 20px; backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .interactive-box { background: rgba(244, 249, 244, 0.95); border: 1px solid #d5e8d4; border-radius: 10px; padding: 40px; text-align: center; margin-top: 20px; backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
         .interactive-box h3 { font-size: 1.8em; color: var(--primary-green); margin-bottom: 15px; }
         .input-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
         .input-group input, .input-group select { padding: 15px; width: 100%; max-width: 160px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Montserrat'; font-size: 0.95em; text-align: center; background: rgba(255,255,255,0.9); color: var(--text-dark); cursor: pointer; }
-        .btn-calc { background: var(--accent-green); color: white; border: none; padding: 15px 30px; font-size: 1em; font-weight: 600; border-radius: 5px; cursor: pointer; transition: 0.3s; font-family: 'Montserrat'; width: 100%; max-width: 300px; }
-        .btn-calc:hover { background: var(--primary-green); }
         #result-area { margin-top: 20px; font-size: 1.2em; font-weight: 500; color: var(--primary-green); }
 
-        .quiz-container { display: none; margin-top: 40px; text-align: left; background: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .quiz-container { display: none; margin-top: 40px; text-align: left; background: rgba(255, 255, 255, 0.98); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .quiz-container h4 { color: var(--primary-green); font-size: 1.5em; margin-bottom: 20px; text-align: center; }
         .quiz-item { margin-bottom: 15px; }
         .quiz-item label { display: block; font-weight: 500; color: var(--text-dark); margin-bottom: 5px; font-size: 0.95em; }
         .quiz-item select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Montserrat'; background: #fafafa; }
-        
-        /* Timeline */
+
+        /* Timeline (Klinik Rotasyonlar) */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; }
         .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--border-light); top: 0; bottom: 0; left: 50%; margin-left: -1px; }
         .timeline-item { padding: 30px 40px; position: relative; width: 50%; }
@@ -112,13 +145,64 @@
         .left { left: 0; text-align: right; }
         .right { left: 50%; text-align: left; }
         .right::after { left: -7px; }
-        .timeline-content { background: rgba(255,255,255,0.7); padding: 20px; border-radius: 10px; backdrop-filter: blur(5px); }
+        .timeline-content { background: rgba(255,255,255,0.85); padding: 20px; border-radius: 10px; backdrop-filter: blur(5px); }
         .timeline-content h3 { color: var(--primary-green); margin-bottom: 5px; font-size: 1.3em; }
         .timeline-content h4 { color: var(--accent-green); margin-bottom: 10px; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .timeline-content p { color: var(--text-muted); font-size: 0.9em; }
 
+        /* Online Diyet Bölümü */
+        .online-diet-section { display: flex; align-items: center; gap: 40px; background-color: rgba(255,255,255,0.95); padding: 50px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid var(--border-light); margin-top: 40px; backdrop-filter: blur(5px); }
+        .online-diet-text { flex: 1; }
+        .online-diet-text h3 { font-size: 2em; color: var(--primary-green); margin-bottom: 15px; }
+        .online-diet-text p.intro { font-size: 1.05em; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8; text-align: justify; }
+
+        /* Ön Görüşme Bölümü */
+        .consultation-box { background: rgba(233, 242, 235, 0.95); border-left: 5px solid var(--accent-green); padding: 40px; border-radius: 0 10px 10px 0; margin-top: 40px; backdrop-filter: blur(5px); }
+        .consultation-box h3 { font-size: 1.8em; color: var(--primary-green); margin-bottom: 15px; }
+        .consultation-box p.intro { font-weight: 500; margin-bottom: 20px; color: var(--text-dark); text-align: justify; line-height: 1.8; }
+        .urgency-text { font-size: 1.15em; color: var(--warning-red); font-weight: 700; margin-bottom: 20px; display: block; animation: pulseText 2s infinite; padding: 15px; background: rgba(192, 57, 43, 0.08); border-radius: 5px; text-align: center; border: 1px dashed rgba(192, 57, 43, 0.3); }
+        
+        @keyframes pulseText { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.01); } 100% { opacity: 1; transform: scale(1); } }
+
+        /* İNTERAKTİF Sağlık Rehberi (6'lı Kart Sistemi ve Modal) */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .blog-card { background: rgba(255,255,255,0.95); border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--border-light); cursor: pointer; }
+        .blog-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: var(--accent-green); }
+        .blog-card-img { height: 200px; background-color: #eee; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.5s; }
+        .blog-card:hover .blog-card-img { transform: scale(1.05); }
+        
+        /* Şık Placeholder Resimler (Unsplash) */
+        .blog-card-img.img1 { background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop'); }
+        .blog-card-img.img2 { background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop'); }
+        .blog-card-img.img3 { background-image: url('https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=800&auto=format&fit=crop'); }
+        .blog-card-img.img4 { background-image: url('https://images.unsplash.com/photo-1494390248081-4e521a5940db?q=80&w=800&auto=format&fit=crop'); }
+        .blog-card-img.img5 { background-image: url('https://images.unsplash.com/photo-1478144592103-25e218a04891?q=80&w=800&auto=format&fit=crop'); }
+        .blog-card-img.img6 { background-image: url('https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop'); } 
+        
+        .blog-card-content { padding: 25px; }
+        .blog-author { font-size: 0.8em; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;}
+        .blog-title { font-size: 1.2em; color: var(--primary-green); font-weight: 700; margin-bottom: 10px; font-family: 'Playfair Display', serif; line-height: 1.4; }
+        .blog-desc { font-size: 0.9em; color: var(--text-muted); line-height: 1.6; }
+        .read-more-hint { font-size: 0.85em; color: var(--accent-green); font-weight: 700; margin-top: 15px; display: inline-block; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: border-color 0.3s; }
+        .blog-card:hover .read-more-hint { border-color: var(--accent-green); }
+
+        .blog-hidden-content { display: none; } /* Kartın içindeki gizli uzun metin */
+
+        /* Instagram Tarzı Pop-up (Modal) Pencere */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: #fff; width: 90%; max-width: 800px; border-radius: 15px; padding: 40px; position: relative; transform: scale(0.8); transition: transform 0.3s ease; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 2em; cursor: pointer; color: var(--text-muted); transition: color 0.3s; line-height: 1; }
+        .modal-close:hover { color: var(--warning-red); }
+        .modal-img { width: 100%; height: 350px; border-radius: 10px; object-fit: cover; margin-bottom: 25px; }
+        .modal-title { font-size: 2.2em; color: var(--primary-green); font-family: 'Playfair Display', serif; margin-bottom: 20px; line-height: 1.3; }
+        .modal-text { font-size: 1.1em; color: var(--text-dark); line-height: 1.9; text-align: justify; font-weight: 300; }
+        .modal-text p { margin-bottom: 20px; }
+        .modal-text h4 { color: var(--accent-green); margin-top: 30px; margin-bottom: 10px; font-size: 1.2em; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+
         /* İletişim Bölümü & Google Haritalar & Sosyal Medya */
-        .contact-section { background-color: var(--bg-offwhite); padding: 60px 5%; text-align: center; border-top: 1px solid var(--border-light); position: relative; z-index: 2; }
+        .contact-section { background-color: var(--bg-offwhite); padding: 60px 5%; text-align: center; border-top: 1px solid var(--border-light); position: relative; z-index: 2; margin-top: 50px; }
         .contact-box { max-width: 650px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-bottom: 4px solid var(--primary-green); }
         .contact-box h2 { font-size: 2.2em; color: var(--primary-green); margin-bottom: 25px; }
         .contact-info { display: flex; flex-direction: column; gap: 15px; font-size: 1.1em; color: var(--text-dark); margin-bottom: 15px; }
@@ -126,7 +210,6 @@
         .contact-info a:hover { color: var(--primary-green); }
         .contact-address { font-weight: 500; color: var(--primary-green); margin-top: 10px; font-style: italic; }
         
-        /* Yeni: Sosyal Medya Butonları */
         .social-media-container { margin: 25px 0 35px 0; padding-top: 25px; border-top: 1px dashed var(--border-light); }
         .social-media-container p { font-family: 'Playfair Display', serif; font-size: 1.2em; color: var(--primary-green); font-style: italic; margin-bottom: 15px; font-weight: 600; }
         .social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
@@ -139,18 +222,19 @@
         @media screen and (max-width: 768px) {
             nav { flex-direction: column; padding: 15px; gap: 10px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; width: 100%; }
-            nav ul li a { font-size: 0.75em; letter-spacing: 1px; }
+            nav ul li a { font-size: 0.7em; }
             
-            .hero { padding-top: 140px; }
+            .hero { padding-top: 160px; }
             .hero h1 { font-size: 2.5em; }
-            .hero p { font-size: 1.05em; }
             
             section { padding: 60px 20px; }
             .section-title { font-size: 2em; margin-bottom: 40px; }
             
-            .authority-section { padding: 60px 20px; }
-            .authority-content h2 { font-size: 2em; }
-            .authority-content p { font-size: 1em; text-align: justify; }
+            /* iPhone Mockup Mobil Ayarı */
+            .dietera-wrapper { flex-direction: column; text-align: center; gap: 40px; }
+            .iphone-frame { width: 260px; height: 540px; }
+            .dietera-info h2 { font-size: 1.8em; text-align: center; }
+            .dietera-info .feature-list { display: inline-block; text-align: left; }
             
             .bio-container { flex-direction: column; padding: 30px 20px; text-align: center; }
             .bio-photo { width: 240px; height: 240px; border-radius: 50%; }
@@ -159,10 +243,11 @@
             
             .interactive-box { padding: 25px 15px; }
             .quiz-container { padding: 20px 15px; }
-            
             .input-group { flex-direction: column; align-items: center; }
             .input-group input, .input-group select { max-width: 100%; }
-            .btn-calc { max-width: 100%; }
+            
+            .online-diet-section { flex-direction: column; padding: 30px 20px; text-align: left; }
+            .consultation-box { padding: 25px 20px; border-left: none; border-top: 5px solid var(--accent-green); border-radius: 10px; }
             
             .timeline::after { left: 20px; }
             .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; text-align: left; }
@@ -170,8 +255,10 @@
             .left::after { right: auto; }
             .left { text-align: left; }
             
+            .modal-content { width: 95%; padding: 25px; }
+            .modal-img { height: 200px; }
+            
             .contact-box { padding: 30px 20px; }
-            .contact-box h2 { font-size: 1.8em; }
         }
         
         /* Scroll Animasyonları Sınıfları */
@@ -185,7 +272,7 @@
 </head>
 <body>
 
-    <!-- YENİLENMİŞ DAHA YOĞUN VE SMOOTH ARKA PLAN -->
+    <!-- YOĞUN VE SMOOTH ARKA PLAN -->
     <div class="floating-bg">
         <span style="left: 5%; animation-duration: 28s; animation-delay: 0s; font-size: 5em;">🍏</span>
         <span style="left: 15%; animation-duration: 35s; animation-delay: -10s; font-size: 7em;">🥦</span>
@@ -201,54 +288,112 @@
         <span style="left: 80%; animation-duration: 30s; animation-delay: -8s; font-size: 5em;">🥒</span>
     </div>
 
+    <!-- MENÜ -->
     <nav>
         <div class="logo">Diyetisyen Yusuf <span>Çaydaşı</span></div>
         <ul>
             <li><a href="#home">Ana Sayfa</a></li>
             <li><a href="#about">Kurumsal</a></li>
             <li><a href="#analysis">Analiz</a></li>
-            <li><a href="#experience">Klinik</a></li>
-            <li><a href="#contact">İletişim</a></li>
+            <li><a href="#online-diyet">Online Diyet</a></li>
+            <li><a href="#rehber">Rehber</a></li>
         </ul>
     </nav>
 
+    <!-- HERO BÖLÜMÜ -->
     <section id="home" class="hero">
         <div class="announcement-banner reveal">
             <span>HİZMETİNİZDEYİZ</span> Gölbaşı Beslenme ve Sağlıklı Yaşam Merkezimiz Açıldı!
         </div>
         <h1 class="reveal" style="transition-delay: 0.2s;">Zarif, Bilimsel ve <br><i>Sürdürülebilir</i> Sağlık.</h1>
-        <p class="reveal" style="transition-delay: 0.4s;">Kanıta dayalı klinik beslenme stratejileriyle, metabolizmanıza ve yaşam tarzınıza özel dönüşüm sanatı.</p>
+        <p class="reveal" style="transition-delay: 0.4s;">Klasik diyet listelerini unutun. Birebir sizin için tasarladığım klinik takip sistemiyle, metabolizmanıza tam entegre bir dönüşüm başlatıyoruz.</p>
+        <a href="#analysis" class="btn-main reveal" style="transition-delay: 0.6s;">Metabolik Analize Başla</a>
     </section>
 
-    <!-- Otorite Bölümü -->
+    <!-- OTORİTE BÖLÜMÜ -->
     <div class="authority-section">
         <div class="authority-content reveal">
-            <h2>Global Literatür, Kesin Sonuçlar</h2>
-            <p>İngilizce akademik altyapımın sunduğu eşsiz avantajla, uluslararası tıbbi beslenme literatürünü ve dünya çapındaki en güncel klinik araştırmaları anlık olarak takip ediyorum. <strong>Aktif olarak takip ettiğim geniş danışan portföyümde bugüne kadar elde ettiğimiz yüzlerce başarılı sonuç ve yüksek talep gören spesifik protokollerimiz</strong>, gelenekselleşmiş ve ezbere dayalı listelerin ötesine geçtiğimizin en büyük kanıtıdır. Doğrudan global standartlarda, metabolizmanıza tam entegre olan stratejiler uyguluyoruz. Bu bilimsel ve kanıta dayalı yaklaşım, kısıtlı kontenjanlarla yürüttüğümüz danışanlarımızın <strong>kesin ve kalıcı sonuçlar</strong> almasının en temel güvencesidir.</p>
-            <div class="authority-badge">Kanıta Dayalı Tıbbi Beslenme</div>
+            <h2>Global Literatür, Kusursuz Takip</h2>
+            <p>İngilizce akademik altyapımın sunduğu avantajla, uluslararası tıbbi beslenme literatürünü anlık olarak takip ediyorum. Danışanlarımın süreçlerini sıradan kağıt parçalarıyla değil, doğrudan kendi akıllı uygulamamız olan <strong>Dietera</strong> üzerinden büyük bir hassasiyetle yönetiyorum. Kontenjanlarımız dahilinde birlikte yürüdüğümüz danışanlarımızın <strong>kesin ve kalıcı sonuçlar</strong> almasının en temel güvencesi, bu bilimsel yaklaşım ve teknolojik takiptir.</p>
+            <div class="authority-badge">Kanıta Dayalı Tıbbi Beslenme & Akıllı Altyapı</div>
         </div>
     </div>
 
-    <!-- Kurumsal Profil & Fotoğraf Entegrasyonu -->
+    <!-- KURUMSAL PROFİL -->
     <section id="about">
         <h2 class="section-title reveal">Klinik Yetkinlik</h2>
         <div class="bio-container reveal">
             <div class="bio-photo-wrapper reveal-left">
+                <!-- Fotoğraf görünmüyorsa, index.html ile 1748193679475.jfif dosyası aynı klasörde olmalı -->
                 <img src="1748193679475.jfif" alt="Uzman Diyetisyen Yusuf Çaydaşı" class="bio-photo">
             </div>
             <div class="bio-text reveal-right">
-                <p><span class="highlight">Atılım Üniversitesi Beslenme ve Diyetetik (%100 İngilizce)</span> bölümünden edindiğim seçkin akademik eğitim ve üst düzey sağlık kurumlarında tamamladığım klinik rotasyonlarla, beslenmeyi sadece bir "kalori hesabı" değil, hücresel düzeyde bir iyileşme sanatı olarak ele alıyorum.</p>
-                <p>Çoğu insan yıllarca yanlış diyet döngüleri içinde metabolizmasını yıpratır ve sonuç alamaz. Benim klinik yaklaşımım; kilo verememenizin, yorgunluğunuzun veya metabolik tıkanıklıklarınızın altındaki <strong>gerçek kök nedeni bulmak</strong> üzerine kuruludur. Bedeninizin verdiği semptomları ve kan değerlerinizi bilimsel verilerle okuyarak, size geçici bir "yasaklar listesi" değil; hayatınızın kontrolünü geri alacağınız, özgür ve sürdürülebilir bir sağlık sistemi sunuyorum.</p>
+                <p><span class="highlight">Atılım Üniversitesi Beslenme ve Diyetetik (%100 İngilizce)</span> bölümünden edindiğim akademik eğitim ve sağlık kurumlarında tamamladığım klinik rotasyonlarla, beslenmeyi sadece bir "kalori hesabı" değil, hücresel düzeyde bir iyileşme sanatı olarak ele alıyorum.</p>
+                <p>Çoğu insan yıllarca yanlış diyet döngüleri içinde metabolizmasını yıpratır ve sonuç alamaz. Benim klinik yaklaşımım; kilo verememenizin, yorgunluğunuzun veya metabolik tıkanıklıklarınızın altındaki <strong>gerçek kök nedeni bulmak</strong> üzerine kuruludur. Bedeninizin verdiği semptomları ve kan değerlerinizi bilimsel verilerle okuyarak, hayatınızın kontrolünü geri alacağınız sürdürülebilir bir sistem sunuyorum.</p>
             </div>
         </div>
     </section>
 
-    <!-- İdeal Kilo ve Anket Modülü -->
+    <!-- IPHONE 17 PRO MAX MOCKUP EKRANI (Dietera Uygulaması) -->
+    <section id="dietera" class="dietera-section reveal">
+        <div class="dietera-wrapper">
+            
+            <!-- CSS ile Hazırlanmış iPhone Tasarımı -->
+            <div class="iphone-frame reveal-left">
+                <div class="dynamic-island"></div>
+                
+                <div class="app-grid">
+                    <!-- Üst Sıra Standart Uygulamalar -->
+                    <div class="app-icon-container"><div class="app-icon" style="background:#3498db;">📅</div><span class="app-label">Takvim</span></div>
+                    <div class="app-icon-container"><div class="app-icon" style="background:#e74c3c;">📧</div><span class="app-label">Mail</span></div>
+                    <div class="app-icon-container"><div class="app-icon" style="background:#f1c40f;">☀️</div><span class="app-label">Hava</span></div>
+                    <div class="app-icon-container"><div class="app-icon" style="background:#9b59b6;">📸</div><span class="app-label">Kamera</span></div>
+                    
+                    <!-- Orta Sıra: Harita ve Dietera Vurgusu -->
+                    <div class="app-icon-container"><div class="app-icon" style="background:#1abc9c;">🗺️</div><span class="app-label">Harita</span></div>
+                    
+                    <!-- DİETERA UYGULAMASI (Glow Animasyonlu Merkezde) -->
+                    <div class="app-icon-container dietera-app">
+                        <div class="app-icon">
+                            <!-- Dietera Logosu Burada -->
+                            <img src="WhatsApp Image 2026-10-03 at 21.55.42.jpeg" alt="Dietera">
+                        </div>
+                        <span class="app-label" style="font-weight:700; color: #a8e6cf; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">Dietera</span>
+                    </div>
+
+                    <div class="app-icon-container"><div class="app-icon" style="background:#e67e22;">📝</div><span class="app-label">Notlar</span></div>
+                    <div class="app-icon-container"><div class="app-icon" style="background:#34495e;">⚙️</div><span class="app-label">Ayarlar</span></div>
+                </div>
+                
+                <!-- Alt Dock -->
+                <div class="iphone-dock">
+                    <div class="app-icon" style="background:#2ecc71;">📞</div>
+                    <div class="app-icon" style="background:#3498db;">🌐</div>
+                    <div class="app-icon" style="background:#e74c3c;">💬</div>
+                    <div class="app-icon" style="background:#f39c12;">🎵</div>
+                </div>
+            </div>
+
+            <div class="dietera-info reveal-right">
+                <h2>Dijital Klinik Takip Uygulamamız: <span style="color:var(--accent-green);">Dietera</span></h2>
+                <p>Danışanlarımla aramdaki iletişimi sadece haftada bir yapılan seanslarla sınırlamıyorum. Beslenme sürecini sizin için çok daha pratik ve düzenli kılmak adına, tüm adımlarımızı kendi uygulamamız üzerinden yönetiyoruz. Beslenmeniz cebinizde, kontrolünüz her an güvende.</p>
+                <ul class="feature-list" style="margin-bottom: 30px;">
+                    <li>Uygulama İçi <strong>Görüntülü Görüşme</strong> ve Seanslar</li>
+                    <li>Akıllı Bildirimlerle <strong>Su ve Egzersiz Takibi</strong></li>
+                    <li>Görsel ve Makro Bazlı Detaylı <strong>Öğün Günlüğü</strong></li>
+                    <li>Doğrudan Uygulama Üzerinden <strong>Motivasyon İletişimi</strong></li>
+                </ul>
+                <a href="#analysis" class="btn-main">Uygulama İle Tanışın</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- METABOLİK ANALİZ VE ANKET -->
     <section id="analysis">
-        <h2 class="section-title reveal">Metabolik Analiz</h2>
+        <h2 class="section-title reveal">Metabolik Analiz Formu</h2>
         <div class="interactive-box reveal">
-            <h3>Kapsamlı Vücut Analiz Aracı</h3>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">Fiziksel verilerinizi girerek ideal vücut ağırlığı aralığınızı hesaplayın.</p>
+            <h3>Ön Görüşme ve Vücut Analiz Aracı</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Sizi tanımamız ve randevu kaydınızı oluşturmamız için fiziksel verilerinizi eksiksiz girin.</p>
             
             <div class="input-group">
                 <input type="number" id="yas" placeholder="Yaşınız" min="10" max="120">
@@ -261,7 +406,7 @@
                 <input type="number" id="boy" placeholder="Boyunuz (cm)" min="100" max="250">
                 <input type="number" id="kilo" placeholder="Kilonuz (kg)" min="30" max="250">
             </div>
-            <button class="btn-calc" onclick="hesapla()">Analizi Başlat</button>
+            <button class="btn-main" style="width: 100%; max-width: 300px;" onclick="hesapla()">Analizi Başlat</button>
             <div id="result-area"></div>
 
             <!-- 10 Soruluk Profesyonel Anket -->
@@ -309,12 +454,12 @@
                     <select class="anket-soru"><option value="riskli">Çok hızlı yerim</option><option value="orta">Normal hızda</option><option value="saglikli">Yavaş ve çiğneyerek</option></select>
                 </div>
 
-                <button class="btn-calc" style="width:100%; margin-top:15px; max-width:100%;" onclick="anketSonuc()">Sonuçları Değerlendir</button>
+                <button class="btn-main" style="width:100%; margin-top:15px; max-width:100%; background-color: var(--primary-green);" onclick="anketSonuc()">Sonuçları Değerlendir</button>
             </div>
         </div>
     </section>
 
-    <!-- Klinik Tecrübeler -->
+    <!-- KLİNİK ROTASYONLAR -->
     <section id="experience">
         <h2 class="section-title reveal">Klinik Rotasyonlar</h2>
         <div class="timeline">
@@ -362,14 +507,172 @@
         </div>
     </section>
 
+    <!-- ONLİNE DİYET -->
+    <section id="online-diyet">
+        <h2 class="section-title reveal">Online Diyet Sistemi</h2>
+        <div class="online-diet-section reveal">
+            <div class="online-diet-text">
+                <h3>Mesafe Bahanelerini Ortadan Kaldırıyoruz</h3>
+                <p class="intro">Dünyanın neresinde olursanız olun, klinik beslenme danışmanlığını doğrudan evinize getiriyorum. Sizi yoran, tek tip listelerin aksine; yaşam tarzınıza ve kan bulgularınıza entegre bir sistem kuruyoruz.</p>
+                <ul class="feature-list">
+                    <li>Dietera Üzerinden Kesintisiz <strong>İletişim ve Destek</strong></li>
+                    <li>Düzenli ve Görüntülü <strong>Durum Değerlendirmesi</strong></li>
+                    <li>Sosyal Hayatınıza Uygun <strong>Esnek Adaptasyon</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖN GÖRÜŞME -->
+    <section id="on-gorusme">
+        <h2 class="section-title reveal">Ön Görüşme ve Kararlılık</h2>
+        <div class="consultation-box reveal">
+            <h3>Gerçek Bir Dönüşüme Hazır Mısınız?</h3>
+            <p class="intro">Diyet sürecini geçici bir kısıtlama değil, kalıcı bir yaşam tarzı değişikliği olarak görüyorum. Bu dönüşümde sizinle birlikte adım adım ilerliyor ve kalıcı alışkanlıklar kazanmanızı sağlıyorum. Gerçek bir metabolik dönüşüm; ciddiyet ve karşılıklı güven gerektirir.</p>
+            <ul class="feature-list">
+                <li>Kesin bir değişim için psikolojik olarak <strong>hazır olmalısınız.</strong></li>
+                <li>Size özel hazırlanan stratejileri hayatınıza <strong>entegre etmelisiniz.</strong></li>
+                <li>Sürece inanmalı ve <strong>kararlı bir duruş sergilemelisiniz.</strong></li>
+            </ul>
+            <p style="color: var(--text-dark); margin-bottom: 20px; font-style: italic;">Programıma dahil olmadan önce, sistemimize ve birbirimize uygunluğumuzu değerlendiriyorum.</p>
+            
+            <span class="urgency-text">⚠️ DİKKAT: Kontenjanlarımız ve Kampanyalı Paketlerden Yararlanmak İçin Hemen Harekete Geçin!</span>
+            
+            <div style="text-align: center;">
+                <a href="#analysis" class="btn-main">Ücretsiz Formu Doldur</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- İNTERAKTİF SAĞLIK REHBERİ (6'lı Kart Sistemi ve Modal Pop-up) -->
+    <section id="rehber">
+        <h2 class="section-title reveal">Klinik Sağlık Rehberi</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px; font-style: italic;">Makalelerin tamamını okumak için kartların üzerine tıklayın.</p>
+        <div class="blog-grid reveal">
+            
+            <!-- Kart 1 -->
+            <div class="blog-card" data-img="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop" onclick="openModal(this)">
+                <div class="blog-card-img img1"></div>
+                <div class="blog-card-content">
+                    <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
+                    <div class="blog-title">Beslenme Hayatınızın Merkezinde Olmalıdır</div>
+                    <div class="blog-desc">Modern yaşamın getirdiği stresi ve hastalıkları nasıl yenebilirsiniz? Gerçek sağlığın sırrı tabağınızda gizli.</div>
+                    <span class="read-more-hint">Makaleyi Oku ↗</span>
+                </div>
+                <div class="blog-hidden-content">
+                    <h4>Beslenme, Hücrelerinizin İnşa Malzemesidir</h4>
+                    <p>Klinikte danışanlarımla ilk görüşmemde en sık karşılaştığım yanılgı, beslenmenin sadece bir "kilo verme aracı" olarak görülmesidir. Oysa beslenme, hücrelerinizin günlük inşa malzemesidir. Sabah güne başlarken tabağınıza koyduğunuz yiyecek, gün içindeki stres seviyenizi, işinize olan odaklanma gücünüzü ve hatta gece uyku kalitenizi doğrudan belirler.</p>
+                    <p>Özellikle işlenmiş gıdalar ve yüksek rafine şeker içeren ürünler, vücutta "sessiz inflamasyon" dediğimiz hücresel iltihaplanmalara yol açar. Bu da sabahları yorgun uyanmanızın, gün içi enerji düşüşlerinizin temel sebebidir.</p>
+                    <p>Bir diyetisyen olarak tavsiyem; hayatınızın merkezine doğru kompleks karbonhidratları, kaliteli hayvansal/bitkisel proteinleri ve avokado, zeytinyağı gibi sağlıklı yağları koymanızdır. Bunu başardığınızda sadece bedensel bir hafifleme değil, zihinsel bir uyanış da yaşarsınız.</p>
+                </div>
+            </div>
+
+            <!-- Kart 2 -->
+            <div class="blog-card" data-img="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop" onclick="openModal(this)">
+                <div class="blog-card-img img2"></div>
+                <div class="blog-card-content">
+                    <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
+                    <div class="blog-title">Duygusal Yemeyi Yönetmenin Sırları</div>
+                    <div class="blog-desc">Stresli anlarda buzdolabına koşmak kaderiniz değil. Duygusal yeme krizlerini durdurmanın biyolojik yolları.</div>
+                    <span class="read-more-hint">Makaleyi Oku ↗</span>
+                </div>
+                <div class="blog-hidden-content">
+                    <h4>Mideniz mi Aç, Yoksa Beyniniz mi?</h4>
+                    <p>Stresli, üzgün, yalnız veya aşırı gergin olduğunuz anlarda midenizin değil, aslında beyninizin acıktığını biliyor muydunuz? Biyolojik olarak stres anında vücudunuz kortizol hormonu salgılar. Bu hormon, beyninize "Tehlikedeyiz, acilen enerji bul!" sinyali gönderir ve beyin en hızlı mutluluk (dopamin ve serotonin) kaynağı olan şekerli, basit karbonhidratlı gıdalara yönelmenizi sağlar.</p>
+                    <p>Bu kısır döngüyü kırmanın ilk kuralı, tetiği fark etmektir. Klinik gözlemlerime göre, fiziksel açlık yavaş yavaş ve midede guruldama ile gelirken; duygusal açlık aniden, boyundan yukarıda ve spesifik bir gıdaya (örneğin sadece çikolata veya cips) yönelik başlar.</p>
+                    <p><strong>Danışanlarıma uyguladığım "15 Dakika Kuralı":</strong> O tatlı krizinin geldiğini hissettiğiniz an mutfağa gitmek yerine 15 dakika bekleyin. Bu sürede büyük bir bardak su için ve ortam değiştirin. Çoğu zaman beyin o sahte aciliyet hissini unutacak ve kontrolü tekrar size verecektir.</p>
+                </div>
+            </div>
+
+            <!-- Kart 3 -->
+            <div class="blog-card" data-img="https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=800&auto=format&fit=crop" onclick="openModal(this)">
+                <div class="blog-card-img img3"></div>
+                <div class="blog-card-content">
+                    <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
+                    <div class="blog-title">Kefir İç, Gerçek Sağlığı Bul</div>
+                    <div class="blog-desc">Bağırsak floranız sizin ikinci beyninizdir. Doğal probiyotik deposu kefirin bağışıklık üzerindeki mucizevi etkileri.</div>
+                    <span class="read-more-hint">Makaleyi Oku ↗</span>
+                </div>
+                <div class="blog-hidden-content">
+                    <h4>İkinci Beynimiz: Bağırsaklarımız ve Probiyotik Güç</h4>
+                    <p>Bağırsaklarımız, trilyonlarca faydalı ve zararlı bakteriye ev sahipliği yapan, bağışıklık sistemimizin tam %70'ini oluşturan ana merkezdir. Kötü beslenme, antibiyotik kullanımı ve stres bu florayı bozarak hastalıklara davetiye çıkarır. İşte bu noktada doğanın bize sunduğu en büyük mucizelerden biri olan kefir devreye giriyor.</p>
+                    <p>Kefir, içerdiği zengin <em>Lactobacillus</em> cinsi canlı probiyotikler sayesinde bağırsak bariyerini onarır. Dahası, vücudumuzdaki mutluluk hormonu olan serotoninin yaklaşık %90'ı bağırsaklarda sentezlenir. Sağlıklı bir bağırsak florası, sadece kronik şişkinlik veya sindirim sorunlarını çözmekle kalmaz; aynı zamanda anksiyeteye karşı korur ve cildin parlamasını sağlar.</p>
+                    <p>Diyet süreçlerinde kilo vermenin durduğu "plato" evrelerinde, metabolik dirençleri kırmanın en doğal yolu florayı yeniden canlandırmaktır. Özellikle gece yatmadan 2 saat önce veya sabah aç karnına içilen bir bardak kefir, bedeninize yapacağınız en büyük yatırımlardandır.</p>
+                </div>
+            </div>
+
+            <!-- Kart 4 -->
+            <div class="blog-card" data-img="https://images.unsplash.com/photo-1494390248081-4e521a5940db?q=80&w=800&auto=format&fit=crop" onclick="openModal(this)">
+                <div class="blog-card-img img4"></div>
+                <div class="blog-card-content">
+                    <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
+                    <div class="blog-title">Kadınlar İçin Süper Besinler</div>
+                    <div class="blog-desc">Hormonal dengeyi sağlamak ve metabolizmayı hızlandırmak için kadınların günlük rutininde olması gereken altın gıdalar.</div>
+                    <span class="read-more-hint">Makaleyi Oku ↗</span>
+                </div>
+                <div class="blog-hidden-content">
+                    <h4>Kadın Metabolizmasına Özel Beslenme Stratejileri</h4>
+                    <p>Kadın metabolizması, aylık hormonal dalgalanmalar (östrojen ve progesteron dengesi) nedeniyle erkeğe göre çok daha hassas ve spesifik bir beslenme rutinine ihtiyaç duyar. Polikistik Over Sendromu (PKOS), insülin direnci ve tiroid yavaşlamaları klinik tablolarda en sık gördüğümüz durumlardır.</p>
+                    <p>Kadın danışanlarımın beslenme programlarına mutlaka eklediğim bazı kilit gıdalar vardır: Aylık döngülerde kaybedilen demir depolarını doldurmak için <strong>ıspanak ve pazı</strong> gibi koyu yeşil yapraklı sebzeler mutlaka tüketilmelidir.</p>
+                    <p>Bunun yanında, cilt elastikiyetini koruyan, kolajen yıkımını önleyen C vitamini deposu <strong>orman meyveleri (yaban mersini, böğürtlen)</strong> ve hormonal inflamasyonu baskılayan Omega-3 zengini <strong>ceviz ile keten tohumu</strong> rutine eklenmelidir. İlerleyen yaşlarda kemik yoğunluğunu korumak için kalsiyum kaynakları elzemdir.</p>
+                </div>
+            </div>
+
+            <!-- Kart 5 -->
+            <div class="blog-card" data-img="https://images.unsplash.com/photo-1478144592103-25e218a04891?q=80&w=800&auto=format&fit=crop" onclick="openModal(this)">
+                <div class="blog-card-img img5"></div>
+                <div class="blog-card-content">
+                    <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
+                    <div class="blog-title">Metabolizmayı Ateşleyen Kural</div>
+                    <div class="blog-desc">Durmuş veya yavaşlamış bir metabolizmayı yeniden canlandırmak ve yağ yakımını maksimize etmek için kritik adımlar.</div>
+                    <span class="read-more-hint">Makaleyi Oku ↗</span>
+                </div>
+                <div class="blog-hidden-content">
+                    <h4>Termik Efekt ve Kas Kütlesinin Gücü</h4>
+                    <p>Sürekli olarak düşük kalorili şok diyetler yapıp bir türlü kalıcı kilo veremiyorsanız, metabolizmanız kendini koruma mekanizması gereği "kıtlık moduna" almış demektir. Vücut tehlikede olduğunu sanır ve harcadığı enerjiyi minimuma indirir. Bu direnci kırmanın ilk yolu, yeterli ve kaliteli protein tüketimidir.</p>
+                    <p>Bilimsel olarak gıdaların "Termik Efekti" (TEF) vardır. Vücudumuz, proteinleri sindirirken karbonhidrat ve yağlara kıyasla yaklaşık %20-30 oranında daha fazla kalori harcar. Yani sadece doğru proteini yiyerek bile metabolizmanızı hızlandırırsınız.</p>
+                    <p>İkinci altın kural ise vücudun enerji santralleri olan kas kütlesini korumaktır. Sadece saatlerce kardiyo yapmak yerine, hafif ağırlık veya kendi vücut ağırlığınızla yapacağınız direnç egzersizleri, oturduğunuz yerde bile kalori yakmanızı sağlar. Kaliteli bir uyku ve bedeni strese sokmadan yapılan dengeli beslenme, yavaşlamış bir metabolizmanın en kesin ilacıdır.</p>
+                </div>
+            </div>
+
+            <!-- Kart 6 -->
+            <div class="blog-card" data-img="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" onclick="openModal(this)">
+                <div class="blog-card-img img6"></div>
+                <div class="blog-card-content">
+                    <div class="blog-author">👤 Dyt. Yusuf Çaydaşı</div>
+                    <div class="blog-title">Su Tüketiminin Yağ Yakımındaki Rolü</div>
+                    <div class="blog-desc">Su içmeden diyet yapmak, benzini olmayan bir arabayı itmeye benzer. Hidrasyonun metabolik etkilerini keşfedin.</div>
+                    <span class="read-more-hint">Makaleyi Oku ↗</span>
+                </div>
+                <div class="blog-hidden-content">
+                    <h4>Biyokimyasal Gerçek: Su Yoksa Yağ Yakımı da Yok</h4>
+                    <p>Bir diyetisyen olarak en sık duyduğum cümlelerden biri "Hocam çok az yiyorum ama kilo veremiyorum" cümlesidir. Sorduğum ilk soru her zaman şu olur: Günde ne kadar su içiyorsunuz?</p>
+                    <p>Vücudunuz susuz (dehidrate) kaldığında, böbrekleriniz toksin atma görevini tam kapasiteyle yapamaz. Bu durumda böbreklerin yükünü vücudun en büyük detoks organı olan "Karaciğer" devralır. Karaciğerin diyet sürecindeki asıl görevi ise depolanmış yağları yakarak (lipoliz) enerjiye çevirmektir. Ancak karaciğer böbreğin işini yapmaya çalışırken, yağ yakımını mecburen askıya alır.</p>
+                    <p>Yani yeterli su içmediğinizde, metabolik olarak yağ yakım hızınızı kendi ellerinizle durdurmuş olursunuz. Sabah uyanır uyanmaz içeceğiniz 2 büyük bardak ılık su, gece boyu yavaşlayan iç organlarınızı yıkayarak metabolizmayı %24 ile %30 oranında hızlandırır. Dietera uygulamamızdaki akıllı su takip sistemi, tam da bu biyokimyasal kilidi kırmak için tasarlanmıştır.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modal (Pop-up) Penceresi -->
+    <div class="modal-overlay" id="blogModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal(event)">&times;</span>
+            <img id="modalImg" src="" alt="Blog Görseli" class="modal-img">
+            <h3 id="modalTitle" class="modal-title">Başlık</h3>
+            <div id="modalText" class="modal-text">İçerik buraya gelecek...</div>
+        </div>
+    </div>
+
     <!-- İLETİŞİM BÖLÜMÜ VE HARİTA EKLENTİSİ -->
     <section id="contact" class="contact-section">
         <div class="contact-box reveal">
-            <h2>İletişim & Ön Görüşme</h2>
+            <h2>İletişim & Randevu</h2>
             <div class="contact-info">
                 <div>📞 Telefon & WhatsApp:<br><a href="tel:+905070410406">0507 041 04 06</a></div>
                 <div style="margin-top: 10px;">✉️ E-Posta:<br><a href="mailto:diyetisyen.yusufcaydasi@gmail.com">diyetisyen.yusufcaydasi@gmail.com</a></div>
-                <div class="contact-address">📍 Seğmenler Mah. 966. Cad. No: 20/A, Gölbaşı / Ankara</div>
+                <div class="contact-address">📍 06830 Gölbaşı/Ankara, Seğmenler, Türkiye</div>
             </div>
 
             <!-- SOSYAL MEDYA BUTONLARI -->
@@ -384,7 +687,7 @@
             <!-- Google Haritalar Entegrasyonu -->
             <div class="map-container">
                 <iframe 
-                    src="https://maps.google.com/maps?q=Se%C4%9Fmenler,%20966.%20Cad.%20No:%2020/A,%20G%C3%B6lba%C5%9F%C4%B1%20/%20Ankara&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    src="https://maps.google.com/maps?q=Diyetisyen%20Yusuf%20%C3%87ayda%C5%9F%C4%B1,%2006830%20G%C3%B6lba%C5%9F%C4%B1/Ankara,%20Se%C4%9Fmenler,%20T%C3%BCrkiye&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                     width="100%" 
                     height="280" 
                     style="border:0; display: block;" 
@@ -417,6 +720,25 @@
         window.addEventListener("scroll", reveal);
         setTimeout(reveal, 100); 
 
+        // Instagram Tarzı Blog Pop-up (Modal) Fonksiyonları
+        function openModal(element) {
+            const imgSrc = element.getAttribute('data-img');
+            const title = element.querySelector('.blog-title').innerText;
+            const text = element.querySelector('.blog-hidden-content').innerHTML;
+            
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalText').innerHTML = text;
+            
+            document.getElementById('blogModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Arka planın kaymasını engeller
+        }
+
+        function closeModal(event) {
+            document.getElementById('blogModal').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Arka plan kaymasını geri açar
+        }
+
         // Kilo Hesaplama ve Anket Gösterme
         function hesapla() {
             let yas = document.getElementById('yas').value;
@@ -430,7 +752,7 @@
                 let boyMetre = boy / 100;
                 let ideal = (22 * (boyMetre * boyMetre)).toFixed(1);
                 
-                sonucAlani.innerHTML = "Kişisel Verilerinize Göre İdeal Kilonuz: <strong>" + ideal + " kg</strong> civarındadır.<br><span style='font-size:0.8em; color:#555;'>Metabolik altyapınızı tam olarak inceleyebilmemiz için lütfen aşağıdaki anketi doldurun.</span>";
+                sonucAlani.innerHTML = "Kişisel Verilerinize Göre İdeal Kilonuz: <strong>" + ideal + " kg</strong> civarındadır.<br><span style='font-size:0.8em; color:#555;'>Ön görüşme kaydınız ve diyet analizi için lütfen aşağıdaki anketi doldurun.</span>";
                 anketAlani.style.display = "block";
                 
                 setTimeout(() => { anketAlani.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
@@ -457,23 +779,23 @@
             if (riskSkoru >= 12) {
                 baslikRenk = "#c0392b";
                 ikon = "⚠️";
-                mesaj = "Verdiğiniz cevaplar doğrultusunda, vücudunuzda gizli bir insülin düzensizliği, duygusal yeme eğilimi veya metabolik adaptasyon sorunu olduğu görülmektedir. Standart listeler yerine, global standartlarda size özel hazırlanmış bir müdahale programı şarttır.";
+                mesaj = "Verdiğiniz cevaplar doğrultusunda, vücudunuzda gizli bir insülin düzensizliği veya metabolik adaptasyon sorunu olduğu görülmektedir. Size özel hazırlanmış bir müdahale programı şarttır.";
             } else if (riskSkoru >= 6) {
                 baslikRenk = "#e67e22";
                 ikon = "📊";
-                mesaj = "Cevaplarınız, beslenme alışkanlıklarınızda ufak tefek metabolik aksaklıklar olduğunu gösteriyor. Bu küçük hatalar ilerleyen dönemlerde kilo almanıza veya kronik yorgunluğa sebep olabilir. Şimdiden profesyonel bir önlem almamız gerekiyor.";
+                mesaj = "Cevaplarınız, beslenme alışkanlıklarınızda ufak tefek aksaklıklar olduğunu gösteriyor. Bu hatalar ilerleyen dönemlerde kilo almanıza sebep olabilir. Şimdiden profesyonel bir önlem almamız gerekiyor.";
             } else {
                 baslikRenk = "#27ae60";
                 ikon = "🌟";
-                mesaj = "Tebrikler! Oldukça sağlıklı ve dengeli bir beslenme altyapınız var. Ancak mevcut formunuzu korumak, kas kütlenizi artırmak veya enerjinizi zirveye taşımak için profesyonel bir 'ince ayara' (optimizasyon programına) ihtiyacınız olabilir.";
+                mesaj = "Tebrikler! Oldukça sağlıklı bir beslenme altyapınız var. Ancak mevcut formunuzu korumak veya enerjinizi zirveye taşımak için profesyonel bir 'ince ayara' (optimizasyon programına) ihtiyacınız olabilir.";
             }
 
             anketAlani.innerHTML = `
             <div style="text-align:center; padding: 20px;">
                 <h3 style="color: ${baslikRenk}; margin-bottom: 15px;">${ikon} Analiz Raporu</h3>
                 <p style="font-size: 1.1em; margin-bottom: 20px; line-height:1.8; color:var(--text-dark);">${mesaj}</p>
-                <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%20beslenme%20anketini%20doldurdum%20ve%20detayl%C4%B1%20analiz%20i%C3%A7in%20%C3%B6n%20g%C3%B6r%C3%BC%C5%9Fme%20talep%20ediyorum." target="_blank" style="display:inline-block; background-color: #25d366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 10px rgba(37,211,102,0.3);">
-                    WhatsApp'tan Ön Görüşme Al
+                <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%20beslenme%20anketini%20doldurdum%20ve%20Dietera%20%C3%BCzerinden%20takip%20edilmek%20%C3%BCzere%20%C3%BCcretsiz%20%C3%B6n%20g%C3%B6r%C3%BC%C5%9Fme%20randevusu%20talep%20ediyorum." target="_blank" class="btn-main" style="background-color: #25d366;">
+                    WhatsApp'tan İletişime Geç
                 </a>
             </div>`;
         }
