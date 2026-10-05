@@ -248,7 +248,7 @@
         .contact-info a { color: var(--accent-green); text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .contact-info a:hover { color: var(--primary-green); }
         
-        /* ADRES KISMI - TIKLANAMAZ, DÜZ YAZI (KOPYALANABİLİR) */
+        /* ADRES KISMI - TIKLANAMAZ, DÜZ YAZI */
         .contact-address { font-weight: 500; margin-top: 10px; color: var(--primary-green); display: block; }
         .contact-address strong { color: var(--text-dark); margin-right: 5px; }
         
@@ -313,6 +313,7 @@
             .modal-img { height: 200px; }
             
             .contact-box { padding: 30px 20px; }
+            .contact-address { text-align: center; }
             
             /* Emoji Animasyon Mobil Ayarı */
             .floating-bg span { font-size: 2.5em; }
@@ -331,7 +332,7 @@
 </head>
 <body>
 
-    <!-- 3 KATMANLI 3D DERİNLİKLİ VE KALABALIK EMOJİ ARKA PLANI -->
+    <!-- YENİ: 3 KATMANLI 3D DERİNLİKLİ VE KALABALIK EMOJİ ARKA PLANI -->
     <div class="floating-bg">
         <!-- Arka Plan (Derinlik - Blur ve Küçük) -->
         <span style="left: 5%; animation-duration: 45s; animation-delay: 0s; font-size: 3em; filter: blur(3px); --target-opacity: 0.08;">🍏</span>
@@ -776,14 +777,20 @@
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-            <div style="margin-top: 15px;">
-                <a href="https://www.google.com/maps/dir/?api=1&destination=Diyetisyen+Yusuf+Çaydaşı,+SEĞMENLER+MAHALLESİ,+966+CAD.+NO:+20+A,+GÖLBAŞI/ANKARA" target="_blank" class="btn-main" style="padding: 10px 25px; font-size: 0.9em; box-shadow: none;">Haritada Yol Tarifi Al</a>
-            </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 30px; background-color: var(--primary-green); color: white; font-size: 0.85em; font-weight: 300; position: relative; z-index: 2;">
-        &copy; 2026 Diyetisyen Yusuf Çaydaşı. Tüm Hakları Saklıdır. | Ankara, Türkiye
+    <!-- FOOTER: TALEP EDİLEN YASAL UYARI VE ÇAYDAŞI GRUP İBARESİ -->
+    <footer style="text-align: center; padding: 40px 5%; background-color: var(--primary-green); color: white; font-size: 0.85em; font-weight: 300; position: relative; z-index: 2; line-height: 1.8;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <p style="margin-bottom: 15px; font-size: 0.9em; opacity: 0.8; text-align: justify; text-align-last: center;">
+                <strong>Yasal Uyarı:</strong> Bu web sitesinde yer alan tüm yazılı ve görsel içerikler yalnızca bilgilendirme amaçlıdır; tıbbi teşhis, tedavi veya reçete yerine geçmez. Sağlık sorunlarınız ve size özel tıbbi beslenme tedavisi için mutlaka hekiminize ve uzman diyetisyeninize başvurunuz. 1219 sayılı Kanun ve ilgili mevzuatlara uygun olarak hazırlanmıştır.
+            </p>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px; margin-top: 15px;">
+                &copy; 2026 Diyetisyen Yusuf Çaydaşı. Tüm Hakları Saklıdır. | Ankara, Türkiye<br>
+                <span style="opacity: 0.9; font-size: 0.95em; font-weight: 500;">Diyetisyen Yusuf Çaydaşı, bir Çaydaşı Grup markasıdır.</span>
+            </div>
+        </div>
     </footer>
 
     <!-- Fonksiyonlar ve Animasyon Motoru -->
