@@ -247,7 +247,10 @@
         .contact-info { display: flex; flex-direction: column; gap: 15px; font-size: 1.1em; color: var(--text-dark); margin-bottom: 15px; }
         .contact-info a { color: var(--accent-green); text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .contact-info a:hover { color: var(--primary-green); }
-        .contact-address { font-weight: 500; color: var(--primary-green); margin-top: 10px; font-style: italic; }
+        
+        /* ADRES KISMI - TIKLANAMAZ, DÜZ YAZI (KOPYALANABİLİR) */
+        .contact-address { font-weight: 500; margin-top: 10px; color: var(--primary-green); display: block; }
+        .contact-address strong { color: var(--text-dark); margin-right: 5px; }
         
         .social-media-container { margin: 25px 0 35px 0; padding-top: 25px; border-top: 1px dashed var(--border-light); }
         .social-media-container p { font-family: 'Playfair Display', serif; font-size: 1.2em; color: var(--primary-green); font-style: italic; margin-bottom: 15px; font-weight: 600; }
@@ -328,7 +331,7 @@
 </head>
 <body>
 
-    <!-- YENİ: 3 KATMANLI 3D DERİNLİKLİ VE KALABALIK EMOJİ ARKA PLANI -->
+    <!-- 3 KATMANLI 3D DERİNLİKLİ VE KALABALIK EMOJİ ARKA PLANI -->
     <div class="floating-bg">
         <!-- Arka Plan (Derinlik - Blur ve Küçük) -->
         <span style="left: 5%; animation-duration: 45s; animation-delay: 0s; font-size: 3em; filter: blur(3px); --target-opacity: 0.08;">🍏</span>
@@ -408,7 +411,7 @@
         </div>
     </section>
 
-    <!-- YENİ: BAŞARI ÖYKÜLERİ (DANIŞAN YORUMLARI) -->
+    <!-- BAŞARI ÖYKÜLERİ (DANIŞAN YORUMLARI) -->
     <section id="basari-oykuleri" class="testimonials-section reveal">
         <h2 class="section-title">Başarı Öyküleri</h2>
         <div class="testimonial-slider-container">
@@ -530,7 +533,7 @@
                     </div>
 
                     <div class="app-icon-container"><div class="app-icon" style="background:#e67e22;">📝</div><span class="app-label">Notlar</span></div>
-                    <div class="app-icon-container"><div class="app-icon" style="background:#34495e;">⚙️️</div><span class="app-label">Ayarlar</span></div>
+                    <div class="app-icon-container"><div class="app-icon" style="background:#34495e;">⚙️</div><span class="app-label">Ayarlar</span></div>
                 </div>
                 
                 <!-- Alt Dock -->
@@ -743,7 +746,11 @@
             <div class="contact-info">
                 <div>📞 Telefon & WhatsApp:<br><a href="tel:+905070410406">0507 041 04 06</a></div>
                 <div style="margin-top: 10px;">✉️ E-Posta:<br><a href="mailto:diyetisyen.yusufcaydasi@gmail.com">diyetisyen.yusufcaydasi@gmail.com</a></div>
-                <div class="contact-address">📍 SEĞMENLER MAHALLESİ, 966 CAD. NO: 20 A İÇ KAPI NO: GÖLBAŞI/ANKARA</div>
+                
+                <!-- DÜZELTME: TIKLANAMAZ, DÜZ YAZI VE SABİT ADRES FORMU -->
+                <div class="contact-address">
+                    📍 <strong>Adres:</strong> SEĞMENLER MAHALLESİ, 966 CAD. NO: 20 A İÇ KAPI NO: GÖLBAŞI/ANKARA
+                </div>
             </div>
 
             <!-- SOSYAL MEDYA BUTONLARI -->
@@ -758,9 +765,9 @@
             <!-- Google Haritalar Entegrasyonu (Tıklanabilir Çerçeve) -->
             <div class="map-container" style="margin-top: 25px;">
                 <!-- Haritaya Tıklanınca Doğrudan Navigasyona/Uygulamaya Giden Link -->
-                <a href="https://www.google.com/maps/search/?api=1&query=SE%C4%9EMENLER+MAHALLES%C4%B0,+966+CAD.+NO:+20+A+%C4%B0%C3%87+KAPI+NO:+G%C3%96LBA%C5%9EI%2FANKARA" target="_blank" class="map-overlay"></a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Diyetisyen+Yusuf+Çaydaşı,+SEĞMENLER+MAHALLESİ,+966+CAD.+NO:+20+A,+GÖLBAŞI/ANKARA" target="_blank" class="map-overlay" title="Haritada Yol Tarifi Al"></a>
                 <iframe 
-                    src="https://maps.google.com/maps?q=SE%C4%9EMENLER%20MAHALLES%C4%B0,%20966%20CAD.%20NO:%2020%20A%20%C4%B0%C3%87%20KAPI%20NO:%20G%C3%96LBA%C5%9EI/ANKARA&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    src="https://maps.google.com/maps?q=Diyetisyen%20Yusuf%20Çaydaşı,%20SEĞMENLER%20MAHALLESİ,%20966%20CAD.%20NO:%2020%20A,%20GÖLBAŞI/ANKARA&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                     width="100%" 
                     height="280" 
                     style="border:0; display: block;" 
@@ -770,7 +777,7 @@
                 </iframe>
             </div>
             <div style="margin-top: 15px;">
-                <a href="https://www.google.com/maps/search/?api=1&query=SE%C4%9EMENLER+MAHALLES%C4%B0,+966+CAD.+NO:+20+A+%C4%B0%C3%87+KAPI+NO:+G%C3%96LBA%C5%9EI%2FANKARA" target="_blank" class="btn-main" style="padding: 10px 25px; font-size: 0.9em; box-shadow: none;">Haritada Yol Tarifi Al</a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Diyetisyen+Yusuf+Çaydaşı,+SEĞMENLER+MAHALLESİ,+966+CAD.+NO:+20+A,+GÖLBAŞI/ANKARA" target="_blank" class="btn-main" style="padding: 10px 25px; font-size: 0.9em; box-shadow: none;">Haritada Yol Tarifi Al</a>
             </div>
         </div>
     </section>
@@ -910,7 +917,7 @@
                 <h3 style="color: ${baslikRenk}; margin-bottom: 15px;">${ikon} Analiz Raporu</h3>
                 <p style="font-size: 1.1em; margin-bottom: 20px; line-height:1.8; color:var(--text-dark);">${mesaj}</p>
                 <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%20beslenme%20anketini%20doldurdum%20ve%20Dietera%20%C3%BCzerinden%20takip%20edilmek%20%C3%BCzere%20%C3%BCcretsiz%20%C3%B6n%20g%C3%B6r%C3%BC%C5%9Fme%20randevusu%20talep%20ediyorum." target="_blank" class="btn-main" style="background-color: #25d366;">
-                    WhatsApp'tan İletişime Geç
+                    İletişime Geçin
                 </a>
             </div>`;
         }
