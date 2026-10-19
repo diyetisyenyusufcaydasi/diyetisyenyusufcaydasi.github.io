@@ -10,7 +10,7 @@
     <!-- Zarif Google Fontları -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         /* Renk Paleti ve Temel Ayarlar */
@@ -23,7 +23,7 @@
             --text-dark: #1a1a1a;
             --text-muted: #555555;
             --border-light: #eaeaea;
-            --warning-red: #c0392b;
+            --warning-red: #d32f2f; 
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,51 +46,68 @@
         ::-webkit-scrollbar-track { background: var(--bg-white); }
         ::-webkit-scrollbar-thumb { background: var(--primary-green); border-radius: 4px; }
 
-        /* MÜKEMMELLEŞTİRİLMİŞ 3D DERİNLİKLİ ARKA PLAN ANİMASYONU */
+        /* YUMUŞAK (SMOOTH) 3D ARKA PLAN ANİMASYONU (Meyveler/Sebzeler) */
         .floating-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; background: transparent; }
         .floating-bg span { 
             position: absolute; 
             top: -15%; 
             font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", sans-serif;
-            animation: floatDown linear infinite; 
+            animation: floatSmooth linear infinite; 
             will-change: transform, opacity;
+            opacity: 0.15;
+            filter: drop-shadow(0px 10px 15px rgba(20, 90, 50, 0.1));
         }
         
-        @keyframes floatDown {
-            0% { transform: translateY(-15vh) rotate(0deg); opacity: 0; }
-            10% { opacity: var(--target-opacity); }
-            85% { opacity: var(--target-opacity); }
-            100% { transform: translateY(115vh) rotate(360deg); opacity: 0; }
+        @keyframes floatSmooth {
+            0% { transform: translateY(-15vh) rotate(0deg) scale(0.9); }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1.1); }
+            100% { transform: translateY(115vh) rotate(360deg) scale(0.9); }
         }
 
         /* Üst Menü */
         nav { background-color: rgba(255, 255, 255, 0.98); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03); transition: all 0.3s ease; }
-        
-        /* ÇAYDAŞI GRUP LOGO ALANI */
         .logo-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; }
         nav .logo { font-size: 1.4em; font-weight: 600; color: var(--primary-green); letter-spacing: 1px; font-style: italic; line-height: 1.1; }
         nav .logo span { font-weight: 400; color: var(--accent-green); }
         .sub-logo { font-size: 0.55em; color: var(--text-muted); letter-spacing: 3.5px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-weight: 600; margin-top: 3px; }
-
         nav ul { list-style: none; display: flex; gap: 20px; }
         nav ul li a { color: var(--text-dark); text-decoration: none; font-weight: 500; font-size: 0.8em; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
         nav ul li a:hover { color: var(--accent-green); }
 
         /* Ortak Buton Stili */
-        .btn-main { display: inline-block; background-color: var(--accent-green); color: white; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-weight: 600; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+        .btn-main { display: inline-block; background-color: var(--accent-green); color: white; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-weight: 700; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
         .btn-main:hover { background-color: var(--primary-green); transform: translateY(-4px); box-shadow: 0 8px 25px rgba(20, 90, 50, 0.4); color: white;}
 
-        /* PSİKOLOJİK DİKKAT ÇEKİCİ (PULSE) BUTON EFEKTİ */
-        .hero-pulse-btn {
-            animation: heroPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
-            box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7);
+        .hero-pulse-btn { animation: heroPulse 2s infinite cubic-bezier(0.66, 0, 0, 1); box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); }
+        @keyframes heroPulse { to { box-shadow: 0 0 0 25px rgba(39, 174, 96, 0); } }
+
+        /* AÇILIŞA ÖZEL KAMPANYA ETİKETİ */
+        .hero-campaign-badge {
+            background: var(--warning-red);
+            color: white;
+            padding: 10px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.05em;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+            animation: superPulseBadge 1.5s infinite alternate ease-in-out;
+            display: inline-block;
+            border: 2px solid rgba(255,255,255,0.3);
         }
-        @keyframes heroPulse {
-            to { box-shadow: 0 0 0 25px rgba(39, 174, 96, 0); }
+        @keyframes superPulseBadge {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(211, 47, 47, 0.3); }
+            100% { transform: scale(1.06); box-shadow: 0 0 30px rgba(211, 47, 47, 0.8); }
         }
 
+        /* YARDIMCI KIRMIZI FONT */
+        .text-red { color: var(--warning-red); font-weight: 800; text-transform: uppercase; }
+
         /* Hero Bölümü */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 50px; background: linear-gradient(to bottom, rgba(243, 248, 245, 0.7) 0%, transparent 100%); position: relative; z-index: 1; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 140px 20px 50px; background: linear-gradient(to bottom, rgba(243, 248, 245, 0.7) 0%, transparent 100%); position: relative; z-index: 1; }
         .hero h1 { font-size: 4em; color: var(--primary-green); font-weight: 700; margin-bottom: 20px; line-height: 1.1; }
         .hero h1 i { font-weight: 400; color: var(--accent-green); }
         .hero p { font-size: 1.2em; max-width: 800px; margin-bottom: 40px; color: var(--text-muted); font-weight: 300; }
@@ -100,8 +117,8 @@
 
         /* Ortak Bölümler */
         section { padding: 80px 5%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-        .section-title { font-size: 2.5em; color: var(--primary-green); text-align: center; margin-bottom: 50px; font-weight: 600; position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 2px; background-color: var(--accent-green); margin: 20px auto 0 auto; }
+        .section-title { font-size: 2.5em; color: var(--primary-green); text-align: center; margin-bottom: 50px; font-weight: 600; position: relative; text-transform: uppercase; letter-spacing: 1px; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background-color: var(--accent-green); margin: 20px auto 0 auto; border-radius: 5px; }
 
         /* Otorite Bölümü */
         .authority-section { background: linear-gradient(135deg, var(--primary-green) 0%, #0e4022 100%); color: white; padding: 80px 5%; text-align: center; margin-top: 50px; position: relative; z-index: 2; }
@@ -111,7 +128,7 @@
         .authority-badge { display: inline-block; border: 2px solid var(--accent-green); padding: 12px 30px; font-size: 1.1em; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--accent-green); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
 
         /* Kurumsal Profil & Fotoğraf Entegrasyonu */
-        .bio-container { background-color: rgba(252, 252, 252, 0.95); padding: 50px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 40px; }
+        .bio-container { background-color: rgba(252, 252, 252, 0.95); padding: 50px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 40px; border: 1px solid var(--border-light); }
         .bio-photo-wrapper { flex-shrink: 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bio-photo { width: 320px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 15px 35px rgba(20, 90, 50, 0.15); border: 4px solid white; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
         .bio-photo:hover { transform: translateY(-8px) scale(1.02); }
@@ -120,13 +137,11 @@
         .bio-text p { margin-bottom: 20px; font-size: 1.05em; color: var(--text-muted); text-align: justify; font-weight: 300; }
         .highlight { color: var(--primary-green); font-weight: 600; font-family: 'Playfair Display', serif; font-style: italic; }
 
-        /* BAŞARI ÖYKÜLERİ (Slider - Oklarla Birlikte) */
+        /* BAŞARI ÖYKÜLERİ (Slider) */
         .testimonials-section { background: var(--bg-offwhite); padding: 80px 5%; text-align: center; border-top: 1px solid var(--border-light); position: relative; z-index: 2; }
         .testimonial-slider-container { display: flex; align-items: center; justify-content: center; gap: 20px; max-width: 950px; margin: 0 auto; position: relative; }
-        
         .slider-btn { background: var(--bg-white); border: 1px solid var(--border-light); color: var(--primary-green); font-size: 1.5em; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; justify-content: center; align-items: center; z-index: 10; }
         .slider-btn:hover { background: var(--primary-green); color: white; transform: scale(1.1); }
-        
         .testimonial-slider { position: relative; width: 100%; overflow: hidden; min-height: 250px; display: flex; align-items: center; }
         .testimonial-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateX(50px) scale(0.95); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); pointer-events: none; padding: 0 10px; }
         .testimonial-slide.active { opacity: 1; transform: translateX(0) scale(1); pointer-events: auto; position: relative; }
@@ -135,7 +150,7 @@
         .testimonial-author { font-weight: 700; color: var(--primary-green); font-size: 1.1em; letter-spacing: 1px; display: block; }
         .testimonial-tag { font-size: 0.8em; color: var(--accent-green); text-transform: uppercase; font-weight: 600; display: block; margin-top: 5px; }
 
-        /* KLİNİK ROTASYONLAR (Zaman Çizelgesi) */
+        /* KLİNİK ROTASYONLAR */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; }
         .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--border-light); top: 0; bottom: 0; left: 50%; margin-left: -1px; }
         .timeline-item { padding: 30px 40px; position: relative; width: 50%; }
@@ -143,16 +158,15 @@
         .left { left: 0; text-align: right; }
         .right { left: 50%; text-align: left; }
         .right::after { left: -7px; }
-        .timeline-content { background: rgba(255,255,255,0.85); padding: 20px; border-radius: 10px; backdrop-filter: blur(5px); transition: transform 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
-        .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+        .timeline-content { background: rgba(255,255,255,0.85); padding: 20px; border-radius: 10px; backdrop-filter: blur(5px); transition: transform 0.4s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid var(--border-light); }
+        .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); border-color: var(--accent-green); }
         .timeline-content h3 { color: var(--primary-green); margin-bottom: 5px; font-size: 1.3em; }
         .timeline-content h4 { color: var(--accent-green); margin-bottom: 10px; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .timeline-content p { color: var(--text-muted); font-size: 0.9em; }
 
-        /* IPHONE 17 PRO MAX MOCKUP EKRANI (Dietera) */
+        /* IPHONE MOCKUP EKRANI (Dietera) */
         .dietera-section { background-color: rgba(255,255,255,0.95); padding: 80px 5%; margin-top: 40px; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); position: relative; z-index: 2; }
         .dietera-wrapper { display: flex; align-items: center; justify-content: center; gap: 80px; max-width: 1100px; margin: 0 auto; }
-        
         .iphone-frame { width: 280px; height: 580px; background: linear-gradient(135deg, #a8e6cf 0%, #34495e 100%); border-radius: 45px; border: 12px solid #2c2c2e; box-shadow: 0 30px 60px rgba(0,0,0,0.2), inset 0 0 0 5px #000; position: relative; overflow: hidden; display: flex; flex-direction: column; flex-shrink: 0; }
         .dynamic-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 90px; height: 26px; background: #000; border-radius: 20px; z-index: 10; }
         .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 10px; padding: 70px 15px 20px; }
@@ -160,59 +174,173 @@
         .app-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; font-size: 1.5em; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .app-icon img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
         .app-label { color: #fff; font-size: 0.65em; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.5); font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-        
         .dietera-app { transform: scale(1.15); position: relative; z-index: 5; animation: pulseApp 2.5s infinite; }
         .dietera-app .app-icon { box-shadow: 0 0 25px rgba(39, 174, 96, 0.8); border: 2px solid #fff; background: white; }
         @keyframes pulseApp { 0% { transform: scale(1.15); } 50% { transform: scale(1.22); } 100% { transform: scale(1.15); } }
-        
         .iphone-dock { margin-top: auto; margin-bottom: 15px; background: rgba(255,255,255,0.3); backdrop-filter: blur(20px); border-radius: 25px; padding: 12px 10px; display: flex; justify-content: space-around; width: 90%; align-self: center; }
-
         .dietera-info { flex: 1; }
         .dietera-info h2 { font-size: 2.2em; color: var(--primary-green); font-weight: 700; margin-bottom: 20px; line-height: 1.2; font-family: 'Playfair Display', serif; }
         .dietera-info p { font-size: 1.05em; color: var(--text-muted); margin-bottom: 25px; line-height: 1.8; text-align: justify; }
-        
         .feature-list { list-style: none; margin-bottom: 25px; text-align: left; }
         .feature-list li { margin-bottom: 12px; padding-left: 28px; position: relative; color: var(--text-muted); font-weight: 500; font-size: 1.05em; }
         .feature-list li::before { content: '✓'; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; font-size: 1.2em; top: -2px; }
         .feature-list li strong { color: var(--primary-green); }
 
-        /* İdeal Kilo & Anket Modülü */
+
+        /* ========================================= */
+        /* KUSURSUZ OPTİMİZE VİDEO ANİMASYON MASKESİ */
+        /* ========================================= */
+        .video-animation-container {
+            width: 100%; max-width: 1100px; margin: 0 auto 50px;
+            border-radius: 15px; position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 4px solid var(--border-light);
+            background-color: var(--bg-white);
+            overflow: hidden;
+        }
+        
+        .video-ratio-keeper {
+            width: 100%;
+            padding-top: 29%; /* Sadece üst %50 katmanı gösterecek sinematik oran */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Sağ tarafta kaybolan/eriyen adamları gizlemek için SİNEMATİK GEÇİŞ MASKESİ */
+        .video-ratio-keeper::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 25%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1) 90%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .video-ratio-keeper video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 105%; /* Kenar payı */
+            height: 200%; /* Sadece üst %50'yi gösterir (Bottom Crop) */
+            object-fit: cover;
+            object-position: left top;
+            pointer-events: none;
+            transform: scale(1.02); /* Yapay zeka titremelerini engeller */
+        }
+
+
+        /* ========================================= */
+        /* BASKICI, KARE VE SİMETRİK 6'LI PAKETLER   */
+        /* ========================================= */
+        .pricing-section { background-color: var(--bg-white); padding: 80px 5%; border-top: 1px solid var(--border-light); position: relative; z-index: 2; }
+        
+        .campaign-header-box { text-align: center; margin-bottom: 40px; }
+        
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        
+        /* Kare Alt Yapı */
+        .pricing-card { background: var(--bg-white); border: 2px solid var(--border-light); border-radius: 0px; text-align: center; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease; position: relative; display: flex; flex-direction: column; z-index: 1; overflow: visible; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .pricing-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--text-dark); z-index: 2; }
+        
+        /* Önerilen Paket (Ortadaki) */
+        .pricing-card.popular { border: 4px solid var(--accent-green); background: rgba(233, 242, 235, 0.3); transform: scale(1.03); z-index: 3; box-shadow: 0 10px 30px rgba(39, 174, 96, 0.15); }
+        .pricing-card.popular:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 25px 50px rgba(39, 174, 96, 0.25); border-color: var(--accent-green); }
+        
+        /* KÖŞEYİ SARAN (WRAPPED) TEMİZ ROZET */
+        .ribbon-wrap { position: absolute; right: -5px; top: -5px; z-index: 10; width: 120px; height: 120px; overflow: hidden; pointer-events: none; }
+        .ribbon-text { position: absolute; display: block; width: 180px; padding: 10px 0; background-color: var(--warning-red); color: #fff; font-weight: 900; font-size: 0.85em; text-transform: uppercase; text-align: center; right: -40px; top: 25px; transform: rotate(45deg); box-shadow: 0 4px 10px rgba(0,0,0,0.3); letter-spacing: 2px; }
+        
+        .pricing-card-content { padding: 45px 30px 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .pricing-title { font-family: 'Playfair Display', serif; color: var(--primary-green); font-size: 1.7em; font-weight: 900; margin-bottom: 5px; line-height: 1.3; }
+        .pricing-subtitle { color: var(--text-muted); font-size: 0.85em; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; font-weight: 800; }
+        
+        .pricing-price { margin-bottom: 25px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .old-price { text-decoration: line-through; color: #888; font-size: 1.2em; font-weight: 600; }
+        .new-price { font-size: 3.2em; color: var(--text-dark); font-weight: 900; font-family: 'Playfair Display', serif; line-height: 1; }
+        .pricing-card.popular .new-price { color: var(--primary-green); }
+        
+        .pricing-features { list-style: none; margin-bottom: 20px; text-align: left; flex-grow: 1; }
+        .pricing-features li { margin-bottom: 15px; font-size: 0.95em; color: var(--text-dark); padding-left: 28px; position: relative; line-height: 1.6; font-weight: 600; }
+        .pricing-features li::before { content: '✓'; color: var(--accent-green); position: absolute; left: 0; top: -2px; font-size: 1.3em; font-weight: bold; }
+        
+        /* Baskıcı Siyah Buton Alanı (Kare Form) */
+        .pricing-bottom { background-color: #1a1a1a; padding: 20px; }
+        .pricing-btn { width: 100%; border-radius: 0; background-color: var(--accent-green); border: none; font-size: 1.05em; font-weight: 900; letter-spacing: 1.5px; padding: 18px 10px; color: #fff; transition: all 0.3s; display: block; text-decoration: none; font-family: 'Montserrat', sans-serif; text-transform: uppercase; text-align: center; }
+        .pricing-card.popular .pricing-bottom { background-color: var(--primary-green); }
+        .pricing-card.popular .pricing-btn { background-color: #1a1a1a; color: white; }
+        .pricing-btn:hover { background-color: white; color: #1a1a1a; }
+        .pricing-card.popular .pricing-btn:hover { background-color: white; color: var(--primary-green); }
+
+        /* YENİ: TEK SEANS ÖZEL ALANI (HIZLI 360 Derece Dönen Şeritler) */
+        .single-session-banner { 
+            position: relative; background-color: var(--bg-white); border: 2px solid var(--border-light); 
+            border-radius: 10px; max-width: 750px; margin: 40px auto 50px; padding: 40px; 
+            text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; z-index: 1; 
+        }
+        .single-session-banner::before {
+            content: ''; position: absolute; top: -200%; left: -200%; width: 500%; height: 500%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(39, 174, 96, 0.04) 20px, rgba(39, 174, 96, 0.04) 40px);
+            z-index: -1; animation: rotateStripes 10s linear infinite;
+        }
+        @keyframes rotateStripes {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .single-session-banner p { font-weight: 600; color: var(--text-dark); font-size: 1.15em; line-height: 1.6; }
+        
+        /* Şık, Temiz ve Düzgün WhatsApp Butonu */
+        .whatsapp-info-btn {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; padding: 15px 35px; 
+            border-radius: 50px; font-weight: 800; letter-spacing: 1px; font-size: 1.05em; text-decoration: none; 
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); transition: all 0.3s;
+        }
+        .whatsapp-info-btn svg { width: 26px; height: 26px; fill: white; }
+        .whatsapp-info-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5); color: white; }
+
+        /* Yüz Yüze Referans Afişi */
+        .face-to-face-banner { max-width: 1100px; margin: 60px auto 0; background: #ffffff; color: var(--text-dark); padding: 45px; border-radius: 10px; text-align: center; box-shadow: 0 15px 35px rgba(20, 90, 50, 0.08); display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; border: 1px solid var(--border-light); border-left: 6px solid var(--primary-green); }
+        .face-to-face-text { flex: 1; text-align: left; min-width: 300px; }
+        .face-to-face-text h4 { font-size: 1.9em; margin-bottom: 15px; font-family: 'Playfair Display', serif; color: var(--primary-green); font-weight: 800; text-transform: uppercase; }
+        .face-to-face-text p { font-size: 1.1em; font-weight: 500; opacity: 0.95; line-height: 1.7; color: var(--text-muted); }
+        
+        /* KLİNİK RANDEVUSU OLUŞTUR - PULSE VE HOVER (KIRMIZIYA DÖNEN) EFEKTİ */
+        .clinic-pulse-btn { 
+            background-color: var(--primary-green); color: white; border: 2px solid white; 
+            transition: all 0.3s ease;
+            animation: clinicPulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1); 
+        }
+        .clinic-pulse-btn:hover {
+            background-color: var(--warning-red);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(211, 47, 47, 0.6) !important;
+            animation: none;
+        }
+        @keyframes clinicPulse {
+            0% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); }
+            100% { box-shadow: 0 0 0 25px rgba(39, 174, 96, 0); }
+        }
+
+        /* METABOLİK ANALİZ VE ANKET */
         .interactive-box { background: rgba(244, 249, 244, 0.95); border: 1px solid #d5e8d4; border-radius: 10px; padding: 40px; text-align: center; margin-top: 20px; backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
         .interactive-box h3 { font-size: 1.8em; color: var(--primary-green); margin-bottom: 15px; }
         .input-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
         .input-group input, .input-group select { padding: 15px; width: 100%; max-width: 160px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Montserrat'; font-size: 0.95em; text-align: center; background: rgba(255,255,255,0.9); color: var(--text-dark); cursor: pointer; transition: border-color 0.3s; }
         .input-group input:focus, .input-group select:focus { border-color: var(--accent-green); outline: none; }
         #result-area { margin-top: 20px; font-size: 1.2em; font-weight: 500; color: var(--primary-green); }
-
         .quiz-container { display: none; margin-top: 40px; text-align: left; background: rgba(255, 255, 255, 0.98); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .quiz-container h4 { color: var(--primary-green); font-size: 1.5em; margin-bottom: 20px; text-align: center; }
         .quiz-item { margin-bottom: 15px; }
         .quiz-item label { display: block; font-weight: 500; color: var(--text-dark); margin-bottom: 5px; font-size: 0.95em; }
         .quiz-item select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Montserrat'; background: #fafafa; }
 
-        /* Ön Görüşme Bölümü */
-        .consultation-box { background: rgba(233, 242, 235, 0.95); border-left: 5px solid var(--accent-green); padding: 40px; border-radius: 0 10px 10px 0; margin-top: 40px; backdrop-filter: blur(5px); }
-        .consultation-box h3 { font-size: 1.8em; color: var(--primary-green); margin-bottom: 15px; }
-        .consultation-box p.intro { font-weight: 500; margin-bottom: 20px; color: var(--text-dark); text-align: justify; line-height: 1.8; }
-        .urgency-text { font-size: 1.15em; color: var(--warning-red); font-weight: 700; margin-bottom: 20px; display: block; animation: pulseText 2s infinite; padding: 15px; background: rgba(192, 57, 43, 0.08); border-radius: 5px; text-align: center; border: 1px dashed rgba(192, 57, 43, 0.3); }
-
         /* İNTERAKTİF SAĞLIK REHBERİ (SİMETRİK 4'LÜ KART SİSTEMİ) */
-        .blog-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* Tam simetrik 2x2 düzen */
-            gap: 40px; 
-            margin-top: 40px; 
-            max-width: 950px; 
-            margin-left: auto; 
-            margin-right: auto; 
-        }
-        
+        .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 40px; max-width: 950px; margin-left: auto; margin-right: auto; }
         .blog-card { background: rgba(255,255,255,0.95); border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1); border: 1px solid var(--border-light); cursor: pointer; }
         .blog-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); border-color: var(--accent-green); }
         .blog-card-img { height: 220px; background-color: #eee; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
         .blog-card:hover .blog-card-img { transform: scale(1.08); }
         
-        /* Şık Placeholder Resimler (1'den 4'e Kadar) */
         .blog-card-img.img1 { background-image: url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop'); }
         .blog-card-img.img2 { background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop'); }
         .blog-card-img.img3 { background-image: url('https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=800&auto=format&fit=crop'); }
@@ -224,10 +352,9 @@
         .blog-desc { font-size: 0.95em; color: var(--text-muted); line-height: 1.6; }
         .read-more-hint { font-size: 0.85em; color: var(--accent-green); font-weight: 700; margin-top: 15px; display: inline-block; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: border-color 0.3s; }
         .blog-card:hover .read-more-hint { border-color: var(--accent-green); }
+        .blog-hidden-content { display: none; } 
 
-        .blog-hidden-content { display: none; } /* Kartın içindeki gizli uzun metin */
-
-        /* Instagram Tarzı Pop-up (Modal) Pencere */
+        /* Modal (Pop-up) Pencere */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1); padding: 20px; }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content { background: #fff; width: 100%; max-width: 800px; border-radius: 15px; padding: 40px; position: relative; transform: scale(0.9); opacity: 0; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
@@ -247,8 +374,6 @@
         .contact-info { display: flex; flex-direction: column; gap: 15px; font-size: 1.1em; color: var(--text-dark); margin-bottom: 15px; }
         .contact-info a { color: var(--accent-green); text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .contact-info a:hover { color: var(--primary-green); }
-        
-        /* ADRES KISMI - TIKLANAMAZ, DÜZ YAZI */
         .contact-address { font-weight: 500; margin-top: 10px; color: var(--primary-green); display: block; }
         .contact-address strong { color: var(--text-dark); margin-right: 5px; }
         
@@ -262,6 +387,9 @@
         .map-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: block; cursor: pointer; }
 
         /* KUSURSUZ MOBİL CİHAZ OPTİMİZASYONU */
+        @media screen and (max-width: 950px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media screen and (max-width: 768px) {
             nav { flex-direction: column; padding: 15px; gap: 10px; }
             .logo-wrapper { align-items: center !important; }
@@ -270,11 +398,19 @@
             
             .hero { padding-top: 160px; }
             .hero h1 { font-size: 2.5em; }
+            .hero-campaign-badge { font-size: 0.85em; padding: 10px 15px; }
             
             section { padding: 60px 20px; }
             .section-title { font-size: 2em; margin-bottom: 40px; }
             
-            /* iPhone Mockup Mobil Ayarı */
+            /* Paketler Mobil Ayarı */
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.popular { transform: scale(1); margin: 20px 0; border-width: 2px; }
+            .pricing-card.popular:hover { transform: translateY(-5px) scale(1); }
+            .ribbon-wrap { right: -5px; }
+            .face-to-face-banner { padding: 30px 20px; flex-direction: column; text-align: center; }
+            .face-to-face-text { text-align: center; min-width: 100%; }
+
             .dietera-wrapper { flex-direction: column; text-align: center; gap: 40px; }
             .iphone-frame { width: 260px; height: 540px; margin: 0 auto; }
             .dietera-info h2 { font-size: 1.8em; text-align: center; }
@@ -300,7 +436,6 @@
             
             .consultation-box { padding: 25px 20px; border-left: none; border-top: 5px solid var(--accent-green); border-radius: 10px; }
             
-            /* 4'lü Grid Mobil Ayarı (Alt Alta Düşmesi İçin) */
             .blog-grid { grid-template-columns: 1fr; }
 
             .timeline::after { left: 20px; }
@@ -315,48 +450,40 @@
             .contact-box { padding: 30px 20px; }
             .contact-address { text-align: center; }
             
-            /* Emoji Animasyon Mobil Ayarı */
-            .floating-bg span { font-size: 2.5em; }
+            .floating-bg span { font-size: 2.5em; filter: blur(0px) !important; opacity: 0.1 !important; }
         }
         
-        /* ÇOK DAHA YUMUŞAK (SMOOTH) VE ESTETİK SCROLL ANİMASYONLARI SINIflARI */
+        /* ÇOK DAHA YUMUŞAK (SMOOTH) VE ESTETİK SCROLL ANİMASYONLARI */
         .reveal { opacity: 0; transform: translateY(50px) scale(0.95); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
         .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
-        
         .reveal-left { opacity: 0; transform: translateX(-60px) scale(0.95); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
         .reveal-left.active { opacity: 1; transform: translateX(0) scale(1); }
-        
         .reveal-right { opacity: 0; transform: translateX(60px) scale(0.95); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
         .reveal-right.active { opacity: 1; transform: translateX(0) scale(1); }
     </style>
 </head>
 <body>
 
-    <!-- YENİ: 3 KATMANLI 3D DERİNLİKLİ VE KALABALIK EMOJİ ARKA PLANI -->
+    <!-- YUMUŞAK 3D EMOJİ ARKA PLANI (BOZULMAYAN) -->
     <div class="floating-bg">
-        <!-- Arka Plan (Derinlik - Blur ve Küçük) -->
-        <span style="left: 5%; animation-duration: 45s; animation-delay: 0s; font-size: 3em; filter: blur(3px); --target-opacity: 0.08;">🍏</span>
-        <span style="left: 25%; animation-duration: 48s; animation-delay: -10s; font-size: 2.5em; filter: blur(4px); --target-opacity: 0.07;">🥦</span>
-        <span style="left: 45%; animation-duration: 42s; animation-delay: -5s; font-size: 3.5em; filter: blur(2px); --target-opacity: 0.09;">🥒</span>
-        <span style="left: 65%; animation-duration: 50s; animation-delay: -15s; font-size: 2.8em; filter: blur(3px); --target-opacity: 0.08;">🥑</span>
-        <span style="left: 85%; animation-duration: 46s; animation-delay: -2s; font-size: 3.2em; filter: blur(3px); --target-opacity: 0.08;">🍏</span>
-        <span style="left: 95%; animation-duration: 44s; animation-delay: -20s; font-size: 2.5em; filter: blur(4px); --target-opacity: 0.07;">🥦</span>
-        <span style="left: 15%; animation-duration: 49s; animation-delay: -12s; font-size: 3.1em; filter: blur(3px); --target-opacity: 0.08;">🥑</span>
+        <span style="left: 5%; animation-duration: 45s; animation-delay: 0s; font-size: 3em; filter: blur(3px);">🍏</span>
+        <span style="left: 25%; animation-duration: 48s; animation-delay: -10s; font-size: 2.5em; filter: blur(4px);">🥦</span>
+        <span style="left: 45%; animation-duration: 42s; animation-delay: -5s; font-size: 3.5em; filter: blur(2px);">🥒</span>
+        <span style="left: 65%; animation-duration: 50s; animation-delay: -15s; font-size: 2.8em; filter: blur(3px);">🥑</span>
+        <span style="left: 85%; animation-duration: 46s; animation-delay: -2s; font-size: 3.2em; filter: blur(3px);">🍏</span>
+        <span style="left: 95%; animation-duration: 44s; animation-delay: -20s; font-size: 2.5em; filter: blur(4px);">🥦</span>
+        <span style="left: 15%; animation-duration: 49s; animation-delay: -12s; font-size: 3.1em; filter: blur(3px);">🥑</span>
 
-        <!-- Orta Plan (Normal) -->
-        <span style="left: 10%; animation-duration: 35s; animation-delay: -5s; font-size: 4.5em; filter: blur(1px); --target-opacity: 0.12;">🥒</span>
-        <span style="left: 35%; animation-duration: 38s; animation-delay: -18s; font-size: 5em; filter: blur(1px); --target-opacity: 0.12;">🥑</span>
-        <span style="left: 55%; animation-duration: 32s; animation-delay: -8s; font-size: 4.8em; filter: blur(1px); --target-opacity: 0.15;">🍏</span>
-        <span style="left: 75%; animation-duration: 36s; animation-delay: -22s; font-size: 5.2em; filter: blur(1px); --target-opacity: 0.12;">🥦</span>
-        <span style="left: 90%; animation-duration: 39s; animation-delay: -14s; font-size: 4.6em; filter: blur(1px); --target-opacity: 0.12;">🥒</span>
-        <span style="left: 40%; animation-duration: 34s; animation-delay: -25s; font-size: 4.9em; filter: blur(1px); --target-opacity: 0.12;">🍏</span>
-
-        <!-- Ön Plan (Büyük, Net ve Hızlı) -->
-        <span style="left: 20%; animation-duration: 25s; animation-delay: -3s; font-size: 7em; filter: blur(0px); --target-opacity: 0.18;">🥦</span>
-        <span style="left: 50%; animation-duration: 28s; animation-delay: -12s; font-size: 8em; filter: blur(0px); --target-opacity: 0.15;">🥒</span>
-        <span style="left: 80%; animation-duration: 24s; animation-delay: -7s; font-size: 7.5em; filter: blur(0px); --target-opacity: 0.18;">🥑</span>
-        <span style="left: 8%; animation-duration: 27s; animation-delay: -19s; font-size: 6.5em; filter: blur(0px); --target-opacity: 0.16;">🍏</span>
-        <span style="left: 68%; animation-duration: 26s; animation-delay: -28s; font-size: 7.2em; filter: blur(0px); --target-opacity: 0.17;">🥦</span>
+        <span style="left: 10%; animation-duration: 35s; animation-delay: -5s; font-size: 4.5em; filter: blur(1px);">🥒</span>
+        <span style="left: 35%; animation-duration: 38s; animation-delay: -18s; font-size: 5em; filter: blur(1px);">🥑</span>
+        <span style="left: 55%; animation-duration: 32s; animation-delay: -8s; font-size: 4.8em; filter: blur(1px);">🍏</span>
+        <span style="left: 75%; animation-duration: 36s; animation-delay: -22s; font-size: 5.2em; filter: blur(1px);">🥦</span>
+        <span style="left: 90%; animation-duration: 39s; animation-delay: -14s; font-size: 4.6em; filter: blur(1px);">🥒</span>
+        
+        <span style="left: 20%; animation-duration: 25s; animation-delay: -3s; font-size: 6.5em; filter: blur(0px);">🥦</span>
+        <span style="left: 50%; animation-duration: 28s; animation-delay: -12s; font-size: 7.5em; filter: blur(0px);">🥒</span>
+        <span style="left: 80%; animation-duration: 24s; animation-delay: -7s; font-size: 7em; filter: blur(0px);">🥑</span>
+        <span style="left: 8%; animation-duration: 27s; animation-delay: -19s; font-size: 6em; filter: blur(0px);">🍏</span>
     </div>
 
     <!-- MENÜ -->
@@ -367,8 +494,8 @@
         </div>
         <ul>
             <li><a href="#home">Ana Sayfa</a></li>
-            <li><a href="#about">Kurumsal</a></li>
-            <li><a href="#basari-oykuleri">Öyküler</a></li>
+            <li><a href="#about">Hakkımda</a></li>
+            <li><a href="#paketler">Paketler</a></li>
             <li><a href="#dietera">Online Diyet</a></li>
             <li><a href="#rehber">Rehber</a></li>
         </ul>
@@ -376,12 +503,13 @@
 
     <!-- HERO BÖLÜMÜ -->
     <section id="home" class="hero">
+        <div class="hero-campaign-badge">🔥 Açılışa Özel Sınırlı Kontenjan Kampanyası 🔥</div>
         <div class="announcement-banner reveal">
             <span>HİZMETİNİZDEYİZ</span> Gölbaşı Beslenme ve Sağlıklı Yaşam Merkezimiz Açıldı!
         </div>
         <h1 class="reveal" style="transition-delay: 0.2s;">Zarif, Bilimsel ve <br><i>Sürdürülebilir</i> Sağlık.</h1>
         <p class="reveal" style="transition-delay: 0.4s;">Klasik diyet listelerini unutun. Birebir sizin için tasarladığım klinik takip sistemiyle, metabolizmanıza tam entegre bir dönüşüm başlatıyoruz.</p>
-        <a href="#analysis" class="btn-main hero-pulse-btn reveal" style="transition-delay: 0.6s;">Metabolik Analize Başla</a>
+        <a href="#analysis" class="btn-main hero-pulse-btn reveal" style="transition-delay: 0.6s;" onclick="setTimeout(()=>document.getElementById('yas').focus(), 800)">Metabolik Analize Başla</a>
     </section>
 
     <!-- OTORİTE BÖLÜMÜ -->
@@ -393,16 +521,15 @@
         </div>
     </div>
 
-    <!-- KURUMSAL PROFİL -->
+    <!-- KURUMSAL PROFİL (HAKKIMDA) -->
     <section id="about">
-        <h2 class="section-title reveal">Klinik Yetkinlik</h2>
+        <h2 class="section-title reveal">Hakkımda</h2>
         <div class="bio-container reveal">
-            <!-- FOTOĞRAF VE YENİ UNVAN KISMI -->
             <div class="bio-photo-wrapper reveal-left">
                 <img src="1748193679475.jfif" alt="Uzman Diyetisyen Yusuf Çaydaşı" class="bio-photo">
                 <div class="bio-title-area">
                     <span style="display: block; font-family: 'Playfair Display', serif; color: var(--primary-green); font-size: 1.3em; font-weight: 700;">Diyetisyen Yusuf Çaydaşı</span>
-                    <span style="display: block; color: var(--accent-green); font-size: 0.85em; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-top: 8px;">Kurucu ve Yönetici Diyetisyen</span>
+                    <span style="display: block; color: var(--accent-green); font-size: 0.85em; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-top: 8px;">Kurucu ve Yönetici Diyetisyen</span>
                 </div>
             </div>
             <div class="bio-text reveal-right">
@@ -412,7 +539,7 @@
         </div>
     </section>
 
-    <!-- BAŞARI ÖYKÜLERİ (DANIŞAN YORUMLARI) -->
+    <!-- BAŞARI ÖYKÜLERİ -->
     <section id="basari-oykuleri" class="testimonials-section reveal">
         <h2 class="section-title">Başarı Öyküleri</h2>
         <div class="testimonial-slider-container">
@@ -459,7 +586,190 @@
         </div>
     </section>
 
-    <!-- KLİNİK ROTASYONLAR (Zaman Çizelgesi) -->
+    <!-- ONLİNE DANIŞMANLIK PAKETLERİ VE KESİLMİŞ OYUN GİBİ VİDEO ANİMASYONU -->
+    <section id="paketler" class="pricing-section reveal">
+        <h2 class="section-title" style="margin-bottom: 20px;">ONLİNE DANIŞMANLIK PAKETLERİ</h2>
+        
+        <div class="campaign-header-box reveal">
+            <p style="font-weight: 600; color: var(--text-dark); font-size: 1.1em; max-width: 850px; margin: 0 auto 10px; line-height: 1.6;">
+                Aşağıdaki paketler kliniğimize gelemeyen hastalarımız için hazırlanmış <strong class="text-red" style="font-size: 1.1em; letter-spacing: 0.5px; background: #ffebee; padding: 2px 8px; border-radius: 5px;">SADECE ONLİNE</strong> görüşmeleri kapsayan özel dijital programlardır.
+            </p>
+            
+            <div style="background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; max-width: 850px; margin: 20px auto 40px; border-radius: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <p style="font-weight: 700; color: #856404; font-size: 0.95em; margin: 0;">
+                    ⚠️ DİKKAT: Yüz yüze ölçüm ve klinik seanslarımızın fiyatlandırması ayrıdır. Yüz yüze randevu oluşturmak için lütfen sayfanın en altındaki formu doldurunuz.
+                </p>
+            </div>
+        </div>
+        
+        <!-- SADECE ÜST YARIYI GÖSTEREN VE HATALARI MASKELEYEN VİDEO ENTEGRASYONU -->
+        <div class="video-animation-container reveal">
+            <div class="video-ratio-keeper">
+                <video autoplay loop muted playsinline disablepictureinpicture>
+                    <source src="gemini_generated_video_400ff164.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            
+            <!-- Paket 1 -->
+            <div class="pricing-card reveal-left">
+                <div class="pricing-card-content">
+                    <h3 class="pricing-title">1 Aylık Başlangıç</h3>
+                    <div class="pricing-subtitle">Bireysel / 4 Seans</div>
+                    <div class="pricing-price">
+                        <span class="old-price">5.000 ₺</span>
+                        <span class="new-price">4.000 ₺</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><strong class="text-red">Dietera</strong> uygulaması üzerinden tam entegre takip</li>
+                        <li>Haftada 1 gün görüntülü veya sesli seans</li>
+                        <li>Sürekli WhatsApp ve uygulama içi motivasyon desteği</li>
+                        <li>Yaşam tarzınıza özel esnek menü planlaması</li>
+                    </ul>
+                </div>
+                <div class="pricing-bottom">
+                    <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%201%20Ayl%C4%B1k%20Ba%C5%9Flang%C4%B1%C3%A7%20kampanyas%C4%B1ndan%20yararlanmak%20istiyorum." target="_blank" class="btn-main pricing-btn">DÖNÜŞÜMÜ BAŞLAT</a>
+                </div>
+            </div>
+
+            <!-- Paket 2 -->
+            <div class="pricing-card reveal">
+                <div class="pricing-card-content">
+                    <h3 class="pricing-title">2 Aylık Adaptasyon</h3>
+                    <div class="pricing-subtitle">Bireysel / 8 Seans</div>
+                    <div class="pricing-price">
+                        <span class="old-price">10.000 ₺</span>
+                        <span class="new-price">7.500 ₺</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><strong class="text-red">Dietera</strong> ile detaylı makro ve kalori takibi</li>
+                        <li>Toplam 8 görüntülü/sesli strateji seansı</li>
+                        <li>Metabolik direnci kırmaya yönelik özel protokoller</li>
+                        <li>Öncelikli WhatsApp iletişim hattı</li>
+                    </ul>
+                </div>
+                <div class="pricing-bottom">
+                    <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%202%20Ayl%C4%B1k%20Adaptasyon%20kampanyas%C4%B1ndan%20yararlanmak%20istiyorum." target="_blank" class="btn-main pricing-btn">DÖNÜŞÜMÜ BAŞLAT</a>
+                </div>
+            </div>
+
+            <!-- Paket 3 (ÖNERİLEN) -->
+            <div class="pricing-card popular reveal-right">
+                <!-- KÖŞEYİ SARAN (WRAPPED) TEMİZ ROZET -->
+                <div class="ribbon-wrap">
+                    <span class="ribbon-text">ÖNERİLEN</span>
+                </div>
+                
+                <div class="pricing-card-content">
+                    <h3 class="pricing-title">3 Aylık Dönüşüm</h3>
+                    <div class="pricing-subtitle">Bireysel / 12 Seans</div>
+                    <div class="pricing-price">
+                        <span class="old-price">15.000 ₺</span>
+                        <span class="new-price">10.000 ₺</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><strong class="text-red">Dietera</strong> ile 90 günlük kesintisiz hücresel onarım</li>
+                        <li>Toplam 12 görüntülü detaylı değerlendirme seansı</li>
+                        <li>Kalıcı kilo kaybı ve metabolik sıfırlama garantisi</li>
+                        <li>7/24 Kesintisiz VIP iletişim ve motivasyon</li>
+                    </ul>
+                </div>
+                <div class="pricing-bottom">
+                    <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%203%20Ayl%C4%B1k%20D%C3%B6n%C3%BC%C5%9F%C3%BCm%20kampanyas%C4%B1ndan%20yararlanmak%20istiyorum." target="_blank" class="btn-main pricing-btn">DÖNÜŞÜMÜ BAŞLAT</a>
+                </div>
+            </div>
+
+            <!-- Paket 4 -->
+            <div class="pricing-card reveal-left">
+                <div class="pricing-card-content">
+                    <h3 class="pricing-title">6 Aylık Yaşam Tarzı</h3>
+                    <div class="pricing-subtitle">Bireysel / 24 Seans</div>
+                    <div class="pricing-price">
+                        <span class="old-price">30.000 ₺</span>
+                        <span class="new-price">18.000 ₺</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><strong class="text-red">Dietera</strong> ile yarım yıllık koruma ve takip kalkanı</li>
+                        <li>Kan tahlillerine göre sürekli güncellenen medikal beslenme</li>
+                        <li>Duygusal yeme ataklarına karşı psikolojik stratejiler</li>
+                        <li>Ömür boyu sürecek kalıcı alışkanlık inşası</li>
+                    </ul>
+                </div>
+                <div class="pricing-bottom">
+                    <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%206%20Ayl%C4%B1k%20Ya%C5%9Fam%20Tarz%C4%B1%20kampanyas%C4%B1ndan%20yararlanmak%20istiyorum." target="_blank" class="btn-main pricing-btn">DÖNÜŞÜMÜ BAŞLAT</a>
+                </div>
+            </div>
+
+            <!-- Paket 5 -->
+            <div class="pricing-card reveal">
+                <div class="pricing-card-content">
+                    <h3 class="pricing-title">Çift Paketi</h3>
+                    <div class="pricing-subtitle">Eş & Arkadaş (1 Aylık)</div>
+                    <div class="pricing-price">
+                        <span class="old-price">10.000 ₺</span>
+                        <span class="new-price">7.000 ₺</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>İki kişiye özel ayrı <strong class="text-red">Dietera</strong> profili ve takibi</li>
+                        <li>Aynı ev/mutfak düzenine uygun senkronize menüler</li>
+                        <li>Karşılıklı motivasyon ile daha hızlı hedef ulaşımı</li>
+                        <li>Avantajlı fiyatlandırma ile ortak seans katılımı</li>
+                    </ul>
+                </div>
+                <div class="pricing-bottom">
+                    <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%20%C3%87ift%20Paketi%20kampanyas%C4%B1ndan%20yararlanmak%20istiyoruz." target="_blank" class="btn-main pricing-btn">DÖNÜŞÜMÜ BAŞLAT</a>
+                </div>
+            </div>
+
+            <!-- Paket 6 -->
+            <div class="pricing-card reveal-right">
+                <div class="pricing-card-content">
+                    <h3 class="pricing-title">Global (Yurtdışı)</h3>
+                    <div class="pricing-subtitle">1 Aylık / 4 Seans</div>
+                    <div class="pricing-price">
+                        <span class="old-price">120 €</span>
+                        <span class="new-price">80 €</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Avrupa ve Amerika saat dilimlerine özel seans planlaması</li>
+                        <li><strong class="text-red">Dietera</strong> üzerinden uluslararası ölçüm ve su takibi</li>
+                        <li>Bulunduğunuz ülkenin market ve gıda şartlarına uygun liste</li>
+                        <li>Haftada 1 gün görüntülü online görüşme</li>
+                    </ul>
+                </div>
+                <div class="pricing-bottom">
+                    <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%20Yurtd%C4%B1%C5%9F%C4%B1%20Global%20Paket%20kampanyas%C4%B1ndan%20yararlanmak%20istiyorum." target="_blank" class="btn-main pricing-btn">DÖNÜŞÜMÜ BAŞLAT</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TEK SEANS ÖZEL ALANI (HIZLI 360 Derece Dönen Şeritler) -->
+        <div class="single-session-banner reveal">
+            <p>Sadece <strong class="text-red" style="font-size: 1.2em;">Tek Seanslık</strong> online veya yüz yüze danışmanlık mı almak istiyorsunuz?</p>
+            <a href="https://wa.me/905070410406?text=Merhaba,%20tek%20seansl%C4%B1k%20g%C3%B6r%C3%BC%C5%9Fme%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" class="whatsapp-info-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+                WhatsApp'tan Bilgi Alın
+            </a>
+        </div>
+
+        <!-- Yüz Yüze Referans Afişi -->
+        <div class="face-to-face-banner reveal">
+            <div class="face-to-face-text">
+                <h4 style="font-size: 2em; margin-bottom: 15px; font-family: 'Playfair Display', serif; color: var(--primary-green); font-weight: 800; text-transform: uppercase;">Ankara'da Gerçek Dönüşüm Başlıyor</h4>
+                <p style="font-size: 1.15em; font-weight: 500; opacity: 0.95; line-height: 1.7; color: var(--text-dark);">
+                    Sürece sadece sıradan bir diyet listesiyle değil, <span style="color: var(--warning-red); font-weight: 700;">profesyonel klinik cihazlarla</span> hücresel düzeyde bir analizle başlamak ister misiniz? 📍 <strong>Gölbaşı kliniğimizde</strong> yağ, kas, iç organ yağlanması ve metabolik yaşınızı milimetrik olarak ölçüyor, size en uygun stratejiyi yüz yüze belirliyoruz. İlk adımı atmak için randevu anketini doldurarak metabolik izinizi bırakın.
+                </p>
+            </div>
+            <a href="#analysis" class="btn-main clinic-pulse-btn" style="flex-shrink: 0; padding: 25px 40px; font-size: 1.1em; font-weight: 800;" onclick="setTimeout(()=>document.getElementById('yas').focus(), 800)">KLİNİK RANDEVUSU OLUŞTUR</a>
+        </div>
+    </section>
+
+    <!-- KLİNİK ROTASYONLAR -->
     <section id="experience">
         <h2 class="section-title reveal">Klinik Rotasyonlar</h2>
         <div class="timeline">
@@ -507,37 +817,25 @@
         </div>
     </section>
 
-    <!-- IPHONE 17 PRO MAX MOCKUP EKRANI (Dietera Uygulaması) -->
+    <!-- IPHONE MOCKUP EKRANI (Dietera) -->
     <section id="dietera" class="dietera-section reveal">
         <div class="dietera-wrapper">
-            
-            <!-- CSS ile Hazırlanmış iPhone Tasarımı -->
             <div class="iphone-frame reveal-left">
                 <div class="dynamic-island"></div>
-                
                 <div class="app-grid">
-                    <!-- Üst Sıra Standart Uygulamalar -->
                     <div class="app-icon-container"><div class="app-icon" style="background:#3498db;">📅</div><span class="app-label">Takvim</span></div>
                     <div class="app-icon-container"><div class="app-icon" style="background:#e74c3c;">📧</div><span class="app-label">Mail</span></div>
                     <div class="app-icon-container"><div class="app-icon" style="background:#f1c40f;">☀️</div><span class="app-label">Hava</span></div>
                     <div class="app-icon-container"><div class="app-icon" style="background:#9b59b6;">📸</div><span class="app-label">Kamera</span></div>
-                    
-                    <!-- Orta Sıra: Harita ve Dietera Vurgusu -->
                     <div class="app-icon-container"><div class="app-icon" style="background:#1abc9c;">🗺️</div><span class="app-label">Harita</span></div>
-                    
-                    <!-- DİETERA UYGULAMASI (Glow Animasyonlu Merkezde) -->
+                    <!-- DİETERA UYGULAMASI -->
                     <div class="app-icon-container dietera-app">
-                        <div class="app-icon">
-                            <img src="WhatsApp Image 2026-10-03 at 21.55.42.jpeg" alt="Dietera">
-                        </div>
+                        <div class="app-icon"><img src="WhatsApp Image 2026-10-03 at 21.55.42.jpeg" alt="Dietera"></div>
                         <span class="app-label" style="font-weight:700; color: #a8e6cf; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">Dietera</span>
                     </div>
-
                     <div class="app-icon-container"><div class="app-icon" style="background:#e67e22;">📝</div><span class="app-label">Notlar</span></div>
                     <div class="app-icon-container"><div class="app-icon" style="background:#34495e;">⚙️</div><span class="app-label">Ayarlar</span></div>
                 </div>
-                
-                <!-- Alt Dock -->
                 <div class="iphone-dock">
                     <div class="app-icon" style="background:#2ecc71;">📞</div>
                     <div class="app-icon" style="background:#3498db;">🌐</div>
@@ -555,7 +853,9 @@
                     <li>Görsel ve Makro Bazlı Detaylı <strong>Öğün Günlüğü</strong></li>
                     <li>Doğrudan Uygulama Üzerinden <strong>Motivasyon İletişimi</strong></li>
                 </ul>
-                <a href="#analysis" class="btn-main">Ön Değerlendirme Anketine Ulaşın</a>
+                <div style="text-align: center;">
+                    <a href="#paketler" class="btn-main" style="padding: 10px 25px; font-size: 0.85em; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Paketleri İncele</a>
+                </div>
             </div>
         </div>
     </section>
@@ -631,27 +931,6 @@
         </div>
     </section>
 
-    <!-- ÖN GÖRÜŞME -->
-    <section id="on-gorusme">
-        <h2 class="section-title reveal">Ön Görüşme ve Kararlılık</h2>
-        <div class="consultation-box reveal">
-            <h3>Gerçek Bir Dönüşüme Hazır Mısınız?</h3>
-            <p class="intro">Diyet sürecini geçici bir kısıtlama değil, kalıcı bir yaşam tarzı değişikliği olarak görüyorum. Bu dönüşümde sizinle birlikte adım adım ilerliyor ve kalıcı alışkanlıklar kazanmanızı sağlıyorum. Gerçek bir metabolik dönüşüm; ciddiyet ve karşılıklı güven gerektirir.</p>
-            <ul class="feature-list">
-                <li>Kesin bir değişim için psikolojik olarak <strong>hazır olmalısınız.</strong></li>
-                <li>Size özel hazırlanan stratejileri hayatınıza <strong>entegre etmelisiniz.</strong></li>
-                <li>Sürece inanmalı ve <strong>kararlı bir duruş sergilemelisiniz.</strong></li>
-            </ul>
-            <p style="color: var(--text-dark); margin-bottom: 20px; font-style: italic;">Programıma dahil olmadan önce, sistemimize ve birbirimize uygunluğumuzu değerlendiriyorum.</p>
-            
-            <span class="urgency-text">⚠️ DİKKAT: Sınırlı Kontenjan ve Kampanyalı Paketlerden Yararlanmak İçin Lütfen Acele Edin!</span>
-            
-            <div style="text-align: center;">
-                <a href="#analysis" class="btn-main">Ön Değerlendirme Anketini Başlatın</a>
-            </div>
-        </div>
-    </section>
-
     <!-- İNTERAKTİF SAĞLIK REHBERİ (SİMETRİK 4'LÜ KART SİSTEMİ) -->
     <section id="rehber">
         <h2 class="section-title reveal">Klinik Sağlık Rehberi</h2>
@@ -659,7 +938,6 @@
         
         <div class="blog-grid reveal">
             
-            <!-- Kart 1 -->
             <div class="blog-card">
                 <div class="blog-card-img img1" data-img="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop" onclick="openModal(this.parentNode)"></div>
                 <div class="blog-card-content" onclick="openModal(this.parentNode)">
@@ -676,7 +954,6 @@
                 </div>
             </div>
 
-            <!-- Kart 2 -->
             <div class="blog-card">
                 <div class="blog-card-img img2" data-img="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop" onclick="openModal(this.parentNode)"></div>
                 <div class="blog-card-content" onclick="openModal(this.parentNode)">
@@ -693,7 +970,6 @@
                 </div>
             </div>
 
-            <!-- Kart 3 -->
             <div class="blog-card">
                 <div class="blog-card-img img3" data-img="https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=800&auto=format&fit=crop" onclick="openModal(this.parentNode)"></div>
                 <div class="blog-card-content" onclick="openModal(this.parentNode)">
@@ -710,7 +986,6 @@
                 </div>
             </div>
 
-            <!-- Kart 4 -->
             <div class="blog-card">
                 <div class="blog-card-img img4" data-img="https://images.unsplash.com/photo-1494390248081-4e521a5940db?q=80&w=800&auto=format&fit=crop" onclick="openModal(this.parentNode)"></div>
                 <div class="blog-card-content" onclick="openModal(this.parentNode)">
@@ -748,7 +1023,6 @@
                 <div>📞 Telefon & WhatsApp:<br><a href="tel:+905070410406">0507 041 04 06</a></div>
                 <div style="margin-top: 10px;">✉️ E-Posta:<br><a href="mailto:diyetisyen.yusufcaydasi@gmail.com">diyetisyen.yusufcaydasi@gmail.com</a></div>
                 
-                <!-- DÜZELTME: TIKLANAMAZ, DÜZ YAZI VE SABİT ADRES FORMU -->
                 <div class="contact-address">
                     📍 <strong>Adres:</strong> SEĞMENLER MAHALLESİ, 966 CAD. NO: 20 A İÇ KAPI NO: GÖLBAŞI/ANKARA
                 </div>
@@ -763,9 +1037,8 @@
                 </div>
             </div>
             
-            <!-- Google Haritalar Entegrasyonu (Tıklanabilir Çerçeve) -->
+            <!-- Google Haritalar Entegrasyonu -->
             <div class="map-container" style="margin-top: 25px;">
-                <!-- Haritaya Tıklanınca Doğrudan Navigasyona/Uygulamaya Giden Link -->
                 <a href="https://www.google.com/maps/dir/?api=1&destination=Diyetisyen+Yusuf+Çaydaşı,+SEĞMENLER+MAHALLESİ,+966+CAD.+NO:+20+A,+GÖLBAŞI/ANKARA" target="_blank" class="map-overlay" title="Haritada Yol Tarifi Al"></a>
                 <iframe 
                     src="https://maps.google.com/maps?q=Diyetisyen%20Yusuf%20Çaydaşı,%20SEĞMENLER%20MAHALLESİ,%20966%20CAD.%20NO:%2020%20A,%20GÖLBAŞI/ANKARA&t=&z=15&ie=UTF8&iwloc=&output=embed" 
@@ -780,7 +1053,7 @@
         </div>
     </section>
 
-    <!-- FOOTER: TALEP EDİLEN YASAL UYARI VE ÇAYDAŞI GRUP İBARESİ -->
+    <!-- FOOTER -->
     <footer style="text-align: center; padding: 40px 5%; background-color: var(--primary-green); color: white; font-size: 0.85em; font-weight: 300; position: relative; z-index: 2; line-height: 1.8;">
         <div style="max-width: 900px; margin: 0 auto;">
             <p style="margin-bottom: 15px; font-size: 0.9em; opacity: 0.8; text-align: justify; text-align-last: center;">
@@ -795,7 +1068,6 @@
 
     <!-- Fonksiyonlar ve Animasyon Motoru -->
     <script>
-        // Başarı Öyküleri (Testimonials) Slider Motoru
         let currentSlide = 0;
         const slides = document.querySelectorAll('.testimonial-slide');
         let slideInterval;
@@ -830,9 +1102,8 @@
             startInterval();
         }
         
-        startInterval(); // Sayfa yüklenince otomatik kaymayı başlat
+        startInterval(); 
 
-        // Scroll Animasyonları
         function reveal() {
             var reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
             for (var i = 0; i < reveals.length; i++) {
@@ -847,9 +1118,7 @@
         window.addEventListener("scroll", reveal);
         setTimeout(reveal, 100); 
 
-        // Instagram Tarzı Blog Pop-up (Modal) Fonksiyonları
         function openModal(element) {
-            // "element" is the blog-card div
             const imgSrcDiv = element.querySelector('.blog-card-img');
             const imgSrc = imgSrcDiv.getAttribute('data-img');
             const title = element.querySelector('.blog-title').innerText;
@@ -860,15 +1129,14 @@
             document.getElementById('modalText').innerHTML = text;
             
             document.getElementById('blogModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Arka planın kaymasını engeller
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeModal(event) {
             document.getElementById('blogModal').classList.remove('active');
-            document.body.style.overflow = 'auto'; // Arka plan kaymasını geri açar
+            document.body.style.overflow = 'auto'; 
         }
 
-        // Kilo Hesaplama ve Anket Gösterme
         function hesapla() {
             let yas = document.getElementById('yas').value;
             let cinsiyet = document.getElementById('cinsiyet').value;
@@ -890,7 +1158,6 @@
             }
         }
 
-        // AKILLI PUANLAMA VE SONUÇ MOTORU
         function anketSonuc() {
             let sorular = document.querySelectorAll('.anket-soru');
             let riskSkoru = 0;
@@ -908,7 +1175,7 @@
             if (riskSkoru >= 12) {
                 baslikRenk = "#c0392b";
                 ikon = "⚠️";
-                mesaj = "Verdiğiniz cevaplar doğrultusunda, vücudunuzda gizli bir insülin düzensizliği veya metabolik adaptasyon sorunu olduğu görülmektedir. Size özel hazırlanmış bir müdahale programı şarttır.";
+                mesaj = "Verdiğiniz cevaplar doğrultusunda, vücudunuzda gizli bir insülin düzensizliği veya metabolik adaptasyon sorunu olduğu görülmektedir. Sizinle iletişime geçip özel bir strateji kurmamız gerekiyor.";
             } else if (riskSkoru >= 6) {
                 baslikRenk = "#e67e22";
                 ikon = "📊";
@@ -916,15 +1183,15 @@
             } else {
                 baslikRenk = "#27ae60";
                 ikon = "🌟";
-                mesaj = "Tebrikler! Oldukça sağlıklı bir beslenme altyapınız var. Ancak mevcut formunuzu korumak veya enerjinizi zirveye taşımak için profesyonel bir 'ince ayara' (optimizasyon programına) ihtiyacınız olabilir.";
+                mesaj = "Tebrikler! Oldukça sağlıklı bir beslenme altyapınız var. Ancak mevcut formunuzu korumak veya enerjinizi zirveye taşımak için profesyonel bir optimizasyon programına ihtiyacınız olabilir.";
             }
 
             anketAlani.innerHTML = `
             <div style="text-align:center; padding: 20px;">
                 <h3 style="color: ${baslikRenk}; margin-bottom: 15px;">${ikon} Analiz Raporu</h3>
                 <p style="font-size: 1.1em; margin-bottom: 20px; line-height:1.8; color:var(--text-dark);">${mesaj}</p>
-                <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%20beslenme%20anketini%20doldurdum%20ve%20Dietera%20%C3%BCzerinden%20takip%20edilmek%20%C3%BCzere%20%C3%BCcretsiz%20%C3%B6n%20g%C3%B6r%C3%BC%C5%9Fme%20randevusu%20talep%20ediyorum." target="_blank" class="btn-main" style="background-color: #25d366;">
-                    İletişime Geçin
+                <a href="https://wa.me/905070410406?text=Merhaba,%20sitenizdeki%20Metabolik%20Analiz%20anketini%20doldurdum.%20Sonu%C3%A7lar%C4%B1ma%20g%C3%B6re%20paketler%20ve%20yol%20haritas%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" class="btn-main" style="background-color: #25d366;">
+                    Sonucu Gönder & Görüşmeye Başla
                 </a>
             </div>`;
         }
