@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diyetisyenyusufcaydasi.github.io/sitemap.xml
