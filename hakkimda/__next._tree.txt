@@ -1,0 +1,4 @@
+:HL["/_next/static/css/939ab70a4f710152.css","style"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"hakkimda","h":64,"c":"$Q2"}]]
+0:{"b":"aZbf6FB1i8pMnOKCNuUHT","t":{"t":{"s":"","h":16,"c":"$Q1"}}}

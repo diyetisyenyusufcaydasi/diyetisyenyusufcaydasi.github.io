@@ -1,0 +1,25 @@
+2:"$Sreact.fragment"
+3:I[4446,[],""]
+4:I[7844,[],""]
+a:I[6119,[],"OutletBoundary"]
+b:"$Sreact.suspense"
+e:"ViewportBoundary"
+f:I[6119,[],"$e"]
+10:"MetadataBoundary"
+11:I[6119,[],"$10"]
+12:I[3510,[],"IconMark"]
+6:X
+6:C
+7:X
+8:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":["$L9",null,["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]]}],"p":"$@d","v":null,"s":"$7"}}]]
+1:[["children",{"s":"dietera","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]]}],"p":"$@5","v":"$6","s":"$7"},"c":"$Q8"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$Lf",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#251811"}]]}],["$","$L11",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Gölbaşı Diyetisyen Yusuf Çaydaşı | Ankara Diyetisyen"}],["$","meta","1",{"name":"description","content":"Gölbaşı/Ankara'da yüz yüze, her yerden online diyetisyen desteği. Kişiye özel beslenme planı, metabolik analiz ve haftalık takip. Ücretsiz ön görüşme için yazın."}],["$","meta","2",{"name":"application-name","content":"Diyetisyen Yusuf Çaydaşı"}],["$","meta","3",{"name":"author","content":"Yusuf Çaydaşı"}],["$","meta","4",{"name":"keywords","content":"diyetisyen,Gölbaşı diyetisyen,Ankara diyetisyen,online diyetisyen,beslenme danışmanlığı,kişiye özel beslenme planı,metabolik beslenme,Yusuf Çaydaşı"}],["$","meta","5",{"name":"robots","content":"index, follow"}],["$","meta","6",{"name":"googlebot","content":"index, follow, max-image-preview:large, max-snippet:-1"}],["$","meta","7",{"name":"category","content":"health"}],["$","meta","8",{"name":"geo.region","content":"TR-06"}],["$","meta","9",{"name":"geo.placename","content":"Gölbaşı, Ankara"}],["$","link","10",{"rel":"canonical","href":"https://diyetisyenyusufcaydasi.github.io/dietera/"}],["$","meta","11",{"property":"og:title","content":"Gölbaşı Diyetisyen Yusuf Çaydaşı | Ankara Diyetisyen"}],["$","meta","12",{"property":"og:description","content":"Gölbaşı/Ankara'da yüz yüze, her yerden online diyetisyen desteği. Kişiye özel beslenme planı, metabolik analiz ve haftalık takip. Ücretsiz ön görüşme için yazın."}],["$","meta","13",{"property":"og:site_name","content":"Diyetisyen Yusuf Çaydaşı"}],["$","meta","14",{"property":"og:locale","content":"tr_TR"}],["$","meta","15",{"property":"og:image","content":"https://diyetisyenyusufcaydasi.github.io/og.jpg"}],["$","meta","16",{"property":"og:image:width","content":"1200"}],["$","meta","17",{"property":"og:image:height","content":"630"}],["$","meta","18",{"property":"og:image:alt","content":"Diyetisyen Yusuf Çaydaşı | Gölbaşı, Ankara"}],["$","meta","19",{"property":"og:type","content":"website"}],["$","meta","20",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","21",{"name":"twitter:title","content":"Gölbaşı Diyetisyen Yusuf Çaydaşı | Ankara Diyetisyen"}],["$","meta","22",{"name":"twitter:description","content":"Gölbaşı/Ankara'da yüz yüze, her yerden online diyetisyen desteği. Kişiye özel beslenme planı, metabolik analiz ve haftalık takip. Ücretsiz ön görüşme için yazın."}],["$","meta","23",{"name":"twitter:image","content":"https://diyetisyenyusufcaydasi.github.io/og.jpg"}],["$","link","24",{"rel":"icon","href":"/favicon.ico?7161ee1d105bc9c7","type":"image/x-icon","sizes":"48x48"}],["$","link","25",{"rel":"icon","href":"/icon.svg?95c6dbda74df77fa","type":"image/svg+xml","sizes":"any"}],["$","$L12","26",{}]]}]}],null]}],null]}],"p":"$@13","v":null,"s":"$7"}},"a":"$@14","u":"$@15","b":"aZbf6FB1i8pMnOKCNuUHT"}
+9:E{"digest":"NEXT_REDIRECT;replace;/#dietera;307;"}
+c:null
+15:true
+7:300
+7:C
+14:0
+5:"$undefined"
+13:"$undefined"
+d:"$undefined"
